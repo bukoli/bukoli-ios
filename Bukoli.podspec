@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
   s.name             = 'Bukoli'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'Bukoli iOS SDK'
-  s.homepage         = 'http://www.bukoli.com'
+  s.homepage         = 'https://github.com/bukoli/bukoli-ios'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Bukoli' => 'http://www.bukoli.com' }
   s.source           = { :git => 'https://github.com/bukoli/bukoli-ios.git', :tag => s.version.to_s }
