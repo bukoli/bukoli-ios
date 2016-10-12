@@ -1,0 +1,6 @@
+use_frameworks!
+
+target 'Bukoli_Example' do
+  pod 'Bukoli', :path => '../'
+
+end
