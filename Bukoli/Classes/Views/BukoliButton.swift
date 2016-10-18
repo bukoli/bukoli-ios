@@ -16,6 +16,9 @@ class BukoliButton: UIButton {
         
         self.setTitleColor( Bukoli.sharedInstance.buttonTextColor , for: .normal)
         self.backgroundColor = Bukoli.sharedInstance.buttonBackgroundColor
+        
+        self.layer.borderWidth = 1
+        self.layer.borderColor = Bukoli.sharedInstance.buttonBackgroundColor.darker().cgColor
     }
     
     override func prepareForInterfaceBuilder() {

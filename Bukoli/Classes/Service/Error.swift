@@ -13,6 +13,11 @@ class Error: Mappable {
     var code: String!
     var error: String!
     
+    init(_ error: NSError) {
+        self.code = String(error.code)
+        self.error = error.localizedDescription
+    }
+    
     required init?(map: Map) {
         
     }

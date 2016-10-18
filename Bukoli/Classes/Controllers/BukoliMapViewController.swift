@@ -24,6 +24,7 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     
     var currentLocation: CLLocation!
     var placeId: String!
+    var centerAnnotation = MKPointAnnotation()
     
     var searchController: UISearchController!
     var panGesture: UIPanGestureRecognizer!
@@ -240,6 +241,10 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
                 self.updatePoints(false)
             }
         }
+        
+        // Center Annotation Coordinate
+        centerAnnotation.coordinate = mapView.region.center
+        
         mapChangedFromUserInteraction = true
     }
     
@@ -250,12 +255,7 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
             mapChangedFromUserInteraction = false
             mapView.showAnnotations(self.bukoliPoints, animated: true)
         }
-        
-        if (currentLocation != nil) {
-            let centerAnnotation = MKPointAnnotation()
-            centerAnnotation.coordinate = currentLocation!.coordinate
-            mapView.addAnnotation(centerAnnotation)
-        }
+        mapView.addAnnotation(centerAnnotation)
     }
     
     
@@ -288,8 +288,11 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
             self.activityIndicator.stopAnimating()
         }) {
             (error: Error) in
-            //TODO: Error Handling
             self.activityIndicator.stopAnimating()
+            var alert = UIAlertController(title: "Hata", message: error.error, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Tamam", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
         }
     }
     
@@ -298,7 +301,9 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.leftBarButtonItem?.tintColor = Bukoli.sharedInstance.buttonBackgroundColor
+        self.navigationItem.leftBarButtonItem?.tintColor = Bukoli.sharedInstance.buttonTextColor
+        self.navigationController?.navigationBar.barTintColor = Bukoli.sharedInstance.buttonBackgroundColor
+        self.navigationController?.navigationBar.isTranslucent = false
 
         // Do any additional setup after loading the view.
         let bukoliSearchViewController = self.storyboard?.instantiateViewController(withIdentifier: "BukoliSearchViewController") as! BukoliSearchViewController
@@ -311,8 +316,9 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = true
         
-        searchController.searchBar.tintColor = Bukoli.sharedInstance.buttonBackgroundColor
         searchController.searchBar.placeholder = "Adres ara"
+        searchController.searchBar.tintColor = Bukoli.sharedInstance.buttonTextColor
+        searchController.searchBar.barTintColor = Bukoli.sharedInstance.buttonBackgroundColor
 
         self.navigationItem.titleView = searchController.searchBar
         
@@ -321,7 +327,6 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         mapView.mapType = .standard
         mapView.showsUserLocation = true
         mapView.isRotateEnabled = false
-        
         
         currentLocation = CLLocation(latitude: 41.04113936, longitude: 28.99533076)
         let viewRegion = MKCoordinateRegionMakeWithDistance(currentLocation.coordinate, 25000, 25000)

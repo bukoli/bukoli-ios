@@ -199,14 +199,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="180" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="VJS-9H-oRX">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="190" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="VJS-9H-oRX">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="BukoliPointCell" id="Svm-Ma-wWg" customClass="BukoliPointCell" customModule="Bukoli" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1" width="375" height="180"/>
+                                        <rect key="frame" x="0.0" y="1" width="375" height="190"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Svm-Ma-wWg" id="jIJ-C5-c95">
-                                            <frame key="frameInset" width="375" height="180"/>
+                                            <frame key="frameInset" width="375" height="190"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e5D-WL-4XL">
@@ -268,7 +268,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="vqh-SC-QSu" firstAttribute="top" secondItem="0cf-pU-8Eb" secondAttribute="bottom" constant="10" id="4Jg-q8-AQe"/>
-                                                <constraint firstAttribute="bottom" secondItem="vqh-SC-QSu" secondAttribute="bottom" constant="10" id="HYO-2t-coE"/>
+                                                <constraint firstAttribute="bottom" secondItem="vqh-SC-QSu" secondAttribute="bottom" constant="20" id="HYO-2t-coE"/>
                                                 <constraint firstItem="0cf-pU-8Eb" firstAttribute="height" secondItem="e5D-WL-4XL" secondAttribute="height" id="Jmw-kv-buK"/>
                                                 <constraint firstItem="0cf-pU-8Eb" firstAttribute="top" secondItem="jIJ-C5-c95" secondAttribute="top" constant="10" id="YQq-q6-Y5q"/>
                                                 <constraint firstItem="e5D-WL-4XL" firstAttribute="top" secondItem="jIJ-C5-c95" secondAttribute="top" constant="10" id="ZEA-aE-IxW"/>
@@ -412,7 +412,7 @@
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pI5-0q-QfC">
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" text="Adres" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hna-Fq-zeG">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" text="Adres" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hna-Fq-zeG">
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -637,11 +637,11 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8iA-nE-LHF" id="Ucc-GK-qFv">
-                                            <frame key="frameInset" width="1000" height="43.5"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="A9T-6U-l3e">
-                                                    <frame key="frameInset" minX="15" width="970" height="43.5"/>
+                                                    <frame key="frameInset" minX="15" width="345" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -662,7 +662,7 @@
                             <constraint firstAttribute="trailing" secondItem="pEz-aF-4AB" secondAttribute="trailing" id="5y0-qy-fmM"/>
                             <constraint firstItem="pEz-aF-4AB" firstAttribute="leading" secondItem="A4B-VY-bYD" secondAttribute="leading" id="6Mb-6R-Ihu"/>
                             <constraint firstItem="HnD-v0-Wia" firstAttribute="top" secondItem="pEz-aF-4AB" secondAttribute="bottom" id="rmg-p1-lf1"/>
-                            <constraint firstItem="pEz-aF-4AB" firstAttribute="top" secondItem="uD0-Z2-VwK" secondAttribute="bottom" constant="45" id="zrr-nd-6is"/>
+                            <constraint firstItem="pEz-aF-4AB" firstAttribute="top" secondItem="uD0-Z2-VwK" secondAttribute="bottom" id="zrr-nd-6is"/>
                         </constraints>
                     </view>
                     <connections>

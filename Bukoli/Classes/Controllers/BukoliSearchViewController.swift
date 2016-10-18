@@ -19,11 +19,18 @@ class BukoliSearchViewController: UIViewController, UITableViewDataSource, UITab
     
     var request: Request?
     
+    var lastSearchText: String?
+    
     // MARK: - UISearchResultsUpdating
     
     func updateSearchResults(for searchController: UISearchController) {
         
         let text = searchController.searchBar.text!
+        
+        if (text == lastSearchText) {
+            return
+        }
+        lastSearchText = text
         
         if (text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).characters.count == 0) {
             // End
@@ -43,7 +50,12 @@ class BukoliSearchViewController: UIViewController, UITableViewDataSource, UITab
             self.tableView.reloadData()
         }) {
             (error: Error) in
-            //TODO: Error Handling
+            self.suggestions = []
+            self.tableView.reloadData()
+            
+            var alert = UIAlertController(title: "Hata", message: error.error, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Tamam", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     

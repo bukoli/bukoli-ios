@@ -13,6 +13,20 @@ import ObjectMapper
 private var baseUrl = "http://bukoli.mobillium.com/integration/"
 
 class WebService {
+    
+    private static var _manager: SessionManager!
+    static var manager: SessionManager {
+        get {
+            if _manager == nil {
+                let configuration = URLSessionConfiguration.default
+                configuration.timeoutIntervalForRequest = 10
+                
+                _manager = SessionManager(configuration: configuration, delegate: SessionDelegate(), serverTrustPolicyManager: nil)
+            }
+            return _manager
+        }
+    }
+    
     class func GET<T: Mappable>(uri: String, parameters: [String: Any]?, success: @escaping ((_ response: T) -> Void), failure: @escaping((_ error: Error) -> Void)) -> Request {
         let headers: HTTPHeaders = [
             "X-iOS-Key": Bukoli.sharedInstance.password,
@@ -21,11 +35,10 @@ class WebService {
         
         let url = baseUrl + uri
         
-        return Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers)
+        return manager.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers)
             .validate()
             .responseJSON {
                 response in
-                
                 if (response.result.isSuccess) {
                     // Success
                     let data = response.result.value as! [String: Any]
@@ -34,12 +47,8 @@ class WebService {
                         return
                     }
                 } else if response.result.isFailure {
-                    // Failure
-                    let data = String(data: response.data!, encoding: String.Encoding.utf8)!
-                    if let object = Mapper<Error>().map(JSONString: data) {
-                        failure(object)
-                        return
-                    }
+                    let error = response.result.error as! NSError
+                    handleError(error, response.data!, failure)
                 }
         }
     }
@@ -52,11 +61,11 @@ class WebService {
         
         let url = baseUrl + uri
         
-        return Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers)
+        return manager.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers)
             .validate()
             .responseJSON {
                 response in
-            
+                
                 if (response.result.isSuccess) {
                     // Success
                     let data = response.result.value as! [[String: Any]]
@@ -67,13 +76,26 @@ class WebService {
                     
                     
                 } else if response.result.isFailure {
-                    // Failure
-                    let data = String(data: response.data!, encoding: String.Encoding.utf8)!
-                    if let object = Mapper<Error>().map(JSONString: data) {
-                        failure(object)
-                        return
-                    }
+                    let error = response.result.error as! NSError
+                    handleError(error, response.data!, failure)
                 }
         }
+    }
+    
+    class func handleError(_ error: NSError, _ data: Data, _ failure: @escaping((_ error: Error) -> Void)) {
+        // Request cancelled
+        if error.code == -999 {
+            return
+        }
+        
+        // Failure
+        let jsonString = String(data: data, encoding: String.Encoding.utf8)!
+        if let object = Mapper<Error>().map(JSONString: jsonString) {
+            failure(object)
+            return
+        }
+        
+        // Connection Error
+        failure(Error(error))
     }
 }

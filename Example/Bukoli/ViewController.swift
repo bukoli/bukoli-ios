@@ -25,14 +25,14 @@ class TableViewController: UITableViewController {
             Bukoli.sharedInstance.buttonBackgroundColor = UIColor(hex: 0xF4AD17)
             Bukoli.sharedInstance.shouldAskPhoneNumber = false
         } else if indexPath.section == 1 {
-            Bukoli.sharedInstance.brandName = "Markafoni"
-            Bukoli.sharedInstance.brandName2 = "Markafoni'den"
+            Bukoli.sharedInstance.brandName = "Example 1"
+            Bukoli.sharedInstance.brandName2 = "Example 1'den"
             Bukoli.sharedInstance.buttonTextColor = UIColor.white
             Bukoli.sharedInstance.buttonBackgroundColor = UIColor(hex: 0xAF005F)
             Bukoli.sharedInstance.shouldAskPhoneNumber = true
         } else if indexPath.section == 2 {
-            Bukoli.sharedInstance.brandName = "Koçtaş"
-            Bukoli.sharedInstance.brandName2 = "Koçtaş'tan"
+            Bukoli.sharedInstance.brandName = "Example 2"
+            Bukoli.sharedInstance.brandName2 = "Example 2'den"
             Bukoli.sharedInstance.buttonTextColor = UIColor.white
             Bukoli.sharedInstance.buttonBackgroundColor = UIColor(hex: 0xF68B1E)
             Bukoli.sharedInstance.shouldAskPhoneNumber = false
@@ -85,7 +85,7 @@ class TableViewController: UITableViewController {
     }
     
     func handlePointNotSelected(_ point: BukoliPoint?, _ phoneNumber: String?) {
-        let alert = UIAlertController(title: "Hata", message: "Point not selected.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Error", message: "Point not selected.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
