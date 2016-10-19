@@ -21,6 +21,8 @@ class BukoliSearchViewController: UIViewController, UITableViewDataSource, UITab
     
     var lastSearchText: String?
     
+    var error: String?
+    
     // MARK: - UISearchResultsUpdating
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -31,6 +33,8 @@ class BukoliSearchViewController: UIViewController, UITableViewDataSource, UITab
             return
         }
         lastSearchText = text
+        
+        error = nil
         
         if (text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).characters.count == 0) {
             // End
@@ -50,38 +54,48 @@ class BukoliSearchViewController: UIViewController, UITableViewDataSource, UITab
             self.tableView.reloadData()
         }) {
             (error: Error) in
+            self.error = error.error
             self.suggestions = []
             self.tableView.reloadData()
-            
-            var alert = UIAlertController(title: "Hata", message: error.error, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Tamam", style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
         }
     }
     
     // MARK - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (section == 0) {
+            return error != nil ? 1 : 0
+        }
         return suggestions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SuggestionCell", for: indexPath)
-        return cell
+        if (indexPath.section == 0) {
+            return tableView.dequeueReusableCell(withIdentifier: "ErrorCell", for: indexPath)
+        }
+        return tableView.dequeueReusableCell(withIdentifier: "SuggestionCell", for: indexPath)
     }
     
     // MARK: UITableViewDelegate
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if (indexPath.section == 0) {
+            cell.textLabel?.text = error
+            return
+        }
         let suggestion = suggestions[indexPath.row]
         cell.textLabel?.text = suggestion.name
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.section == 0) {
+            return
+        }
+        
         let suggestion = suggestions[indexPath.row]
         bukoliMapViewController.placeId = suggestion.id
         bukoliMapViewController.updatePoints()

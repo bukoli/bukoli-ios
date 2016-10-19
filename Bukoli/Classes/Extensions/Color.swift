@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIColor {
-    convenience init(hex:Int) {
+    convenience init(hex:Int64) {
         let red = (hex >> 16) & 0xff
         let green = (hex >> 8) & 0xff
         let blue = hex & 0xff

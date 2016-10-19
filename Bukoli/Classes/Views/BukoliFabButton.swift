@@ -8,25 +8,12 @@
 
 import UIKit
 
-class BukoliFabButton: UIButton {
+class BukoliFabButton: BukoliRoundedButton {
 
-    var backgroundLayer: CALayer!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.layer.masksToBounds = true
-        
         self.tintColor = Bukoli.sharedInstance.buttonTextColor
         self.backgroundColor = Bukoli.sharedInstance.buttonBackgroundColor.darker()
-    }
-    
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        layer.cornerRadius = self.frame.size.width/2
-    }
-    
-    override func prepareForInterfaceBuilder() {
-        self.awakeFromNib()
     }
 
 }

@@ -15,6 +15,7 @@ class BukoliPointCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var workingHoursLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
     
     var mapViewController: BukoliMapViewController!
     
@@ -24,6 +25,7 @@ class BukoliPointCell: UITableViewCell {
             nameLabel.text = bukoliPoint.name
             addressLabel.text = bukoliPoint.address
             workingHoursLabel.text = bukoliPoint.workingHours?.readable()
+            distanceLabel.text = String(format: "%.0f m", arguments: [bukoliPoint.distance])
         }
     }
     
@@ -35,6 +37,11 @@ class BukoliPointCell: UITableViewCell {
     }
     
     // MARK: - Lifecycle
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.layoutMargins = UIEdgeInsets.zero;
+    }
     
     override func prepareForReuse() {
         pointImageView.af_cancelImageRequest()

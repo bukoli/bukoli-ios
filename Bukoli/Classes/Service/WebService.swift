@@ -27,6 +27,7 @@ class WebService {
         }
     }
     
+    @discardableResult
     class func GET<T: Mappable>(uri: String, parameters: [String: Any]?, success: @escaping ((_ response: T) -> Void), failure: @escaping((_ error: Error) -> Void)) -> Request {
         let headers: HTTPHeaders = [
             "X-iOS-Key": Bukoli.sharedInstance.password,
@@ -53,6 +54,7 @@ class WebService {
         }
     }
     
+    @discardableResult
     class func GET<T: Mappable>(uri: String, parameters: [String: Any]?, success: @escaping ((_ response: [T]) -> Void), failure: @escaping((_ error: Error) -> Void)) -> Request {
         let headers: HTTPHeaders = [
             "X-iOS-Key": Bukoli.sharedInstance.password,
