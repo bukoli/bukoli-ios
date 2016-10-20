@@ -78,7 +78,9 @@ class BukoliDetailDialog: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        swipeImageView.isHidden = true
+        if !swipeImageView.isHidden {
+            swipeImageView.isHidden =  true
+        }
     }
     
     // MARK: - Lifecycle

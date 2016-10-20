@@ -211,6 +211,7 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
                 annotationView = BukoliAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
                 
                 let pinView = Bukoli.bundle().loadNibNamed("BukoliPinView", owner: self, options: nil)![0] as! BukoliPinView
+                annotationView!.centerOffset = CGPoint(x: 0, y: -30)
                 annotationView!.layer.zPosition = 0
                 annotationView!.pinView = pinView
                 annotationView!.frame = pinView.frame

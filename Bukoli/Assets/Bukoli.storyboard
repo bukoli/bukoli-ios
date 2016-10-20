@@ -199,15 +199,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="190" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="VJS-9H-oRX">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="180" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="VJS-9H-oRX">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" white="0.94999999999999996" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="BukoliPointCell" id="Svm-Ma-wWg" customClass="BukoliPointCell" customModule="Bukoli" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1" width="320" height="190"/>
+                                        <rect key="frame" x="0.0" y="1" width="320" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Svm-Ma-wWg" id="jIJ-C5-c95">
-                                            <frame key="frameInset" width="320" height="189"/>
+                                            <frame key="frameInset" width="320" height="179"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e5D-WL-4XL">
@@ -276,7 +277,7 @@
                                                 <constraint firstItem="vd0-Zx-Ig7" firstAttribute="trailing" secondItem="e5D-WL-4XL" secondAttribute="trailing" constant="-4" id="0f3-dt-r4c"/>
                                                 <constraint firstItem="vqh-SC-QSu" firstAttribute="top" secondItem="0cf-pU-8Eb" secondAttribute="bottom" constant="10" id="4Jg-q8-AQe"/>
                                                 <constraint firstItem="vd0-Zx-Ig7" firstAttribute="bottom" secondItem="e5D-WL-4XL" secondAttribute="bottom" constant="-4" id="FF9-Pg-iMy"/>
-                                                <constraint firstAttribute="bottom" secondItem="vqh-SC-QSu" secondAttribute="bottom" constant="20" id="HYO-2t-coE"/>
+                                                <constraint firstAttribute="bottom" secondItem="vqh-SC-QSu" secondAttribute="bottom" constant="10" id="HYO-2t-coE"/>
                                                 <constraint firstItem="0cf-pU-8Eb" firstAttribute="height" secondItem="e5D-WL-4XL" secondAttribute="height" id="Jmw-kv-buK"/>
                                                 <constraint firstItem="0cf-pU-8Eb" firstAttribute="top" secondItem="jIJ-C5-c95" secondAttribute="top" constant="10" id="YQq-q6-Y5q"/>
                                                 <constraint firstItem="e5D-WL-4XL" firstAttribute="top" secondItem="jIJ-C5-c95" secondAttribute="top" constant="10" id="ZEA-aE-IxW"/>
