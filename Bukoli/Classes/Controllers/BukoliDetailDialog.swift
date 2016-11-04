@@ -91,6 +91,7 @@ class BukoliDetailDialog: UIViewController, UICollectionViewDataSource, UICollec
         collectionView.isHidden = true
         swipeImageView.tintColor = UIColor.white
         
+        isScrolled = false
         let bukoliUserDefault = UserDefaults(suiteName: "bukoli")!
         if bukoliUserDefault.bool(forKey: "isSwipeShownBefore") {
             swipeImageView.isHidden = true
@@ -107,7 +108,7 @@ class BukoliDetailDialog: UIViewController, UICollectionViewDataSource, UICollec
             isScrolled = true
             collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: false)
             collectionView.isHidden = false
-            updateMap()
+            bukoliMapViewController.moveMap(bukoliPoints[index])
         }
         
     }

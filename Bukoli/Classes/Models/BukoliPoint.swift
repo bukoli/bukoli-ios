@@ -21,6 +21,7 @@ public class BukoliPoint: NSObject, Mappable, MKAnnotation {
     public var county : String!
     public var city : String!
     public var isLocker : Bool!
+    public var state : Int!
     public var distance : Double!
     public var largeImageUrl : String!
     public var smallImageUrl : String!
@@ -41,6 +42,7 @@ public class BukoliPoint: NSObject, Mappable, MKAnnotation {
         county          <- map["county"]
         city            <- map["city"]
         isLocker        <- map["is_locker"]
+        state           <- map["state"]
         distance        <- map["distance"]
         largeImageUrl   <- map["large_image_url"]
         smallImageUrl   <- map["small_image_url"]

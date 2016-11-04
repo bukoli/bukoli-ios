@@ -40,7 +40,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'Bukoli', '~> 1.0'
+    pod 'Bukoli', '~> 1.1'
 end
 ```
 
@@ -86,9 +86,17 @@ Insert the following XML snippet into the body of your file just before the fina
 ### Initialize
 
 ```swift
+AppDelegate.swift
 import Bukoli
 
-Bukoli.initialize("your api key")
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+	// Override point for customization after application launch.
+	...
+	Bukoli.initialize("your api key")
+	..
+	return true
+}
+
 ```
 
 ### Customization
@@ -105,11 +113,13 @@ Bukoli.sharedInstance.shouldAskPhoneNumber = true // If you want to ask user pho
 
 ### Bukoli Select Point
 
-First parameter is presenter viewcontroller.
+SetUser function first parameter is user unique id on your system
+Select function first parameter is presenter viewcontroller.
 
 ```swift
 import Bukoli
 
+Bukoli.setUser(userCode, phone, email) 
 Bukoli.select(self, { (result: BukoliResult, point: BukoliPoint?, phoneNumber: String?) in
     switch(result) {
     case .success:
@@ -141,6 +151,25 @@ import Bukoli
 Bukoli.info(self)
 ```
 
+### Bukoli Select Point
+
+First parameter is point code
+
+```swift
+import Bukoli
+
+Bukoli.pointStatus(pointCode, { (result, point) in
+    switch(result) {
+    case .enabled:
+    	// Point is enabled
+    case .disabled:
+    	// Point is disabled
+    case .notFound:
+    	// Point not found
+    }
+})
+
+```
 
 ## License
 

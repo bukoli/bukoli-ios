@@ -14,6 +14,10 @@ public enum BukoliResult {
     case success, pointNotSelected, phoneNumberMissing
 }
 
+public enum BukoliPointResult {
+    case enabled, disabled, notFound
+}
+
 public class Bukoli
 {
     public static let sharedInstance = Bukoli()
@@ -25,6 +29,10 @@ public class Bukoli
     var bukoliPoint: BukoliPoint?
     var phoneNumber: String?
     
+    var userCode: String?
+    var phone: String?
+    var email: String?
+    
     public var shouldAskPhoneNumber = false
     public var brandName = "Marka"
     public var brandName2 = "Marka'dan"
@@ -35,7 +43,30 @@ public class Bukoli
         Bukoli.sharedInstance.password = password
     }
     
+    public class func setUser(_ userCode: String, _ phone: String?, _ email: String?) {
+        Bukoli.sharedInstance.userCode = userCode
+        Bukoli.sharedInstance.phone = phone
+        Bukoli.sharedInstance.email = email
+    }
+    
+    class func isInitialized() -> Bool
+    {
+        return (Bukoli.sharedInstance.password != nil) && !Bukoli.sharedInstance.password.isEmpty
+    }
+    
+    class func isUserDataSet() -> Bool {
+        return (Bukoli.sharedInstance.userCode != nil) && !Bukoli.sharedInstance.userCode!.isEmpty
+    }
+    
     public class func select(_ presenterViewController: UIViewController, _ completion: @escaping (_ result: BukoliResult, _ point: BukoliPoint?, _ phoneNumber: String?) -> Void) {
+        if (!isInitialized()) {
+            assertionFailure("Bukoli SDK must be initialized.")
+        }
+        if (!isUserDataSet()) {
+            assertionFailure("User Data must be set.")
+        }
+        
+        WebService.integrationToken = nil
         Bukoli.sharedInstance.bukoliPoint = nil
         Bukoli.sharedInstance.phoneNumber = nil
         Bukoli.sharedInstance.completion = completion
@@ -47,12 +78,27 @@ public class Bukoli
     }
     
     public class func info(_ presenterViewController: UIViewController) {
+        if (!isInitialized()) {
+            assertionFailure("Bukoli SDK must be initialized.")
+        }
+        
         let storyboard = UIStoryboard(name:"Bukoli", bundle:Bukoli.bundle())
         let viewController = storyboard.instantiateViewController(withIdentifier: "BukoliInfoDialog") as! BukoliInfoDialog
         viewController.modalPresentationStyle = .overCurrentContext
         viewController.modalTransitionStyle = .crossDissolve
         
         presenterViewController.present(viewController, animated: true, completion: nil)
+    }
+    
+    public class func pointStatus(_ pointCode: String ,_ completion: @escaping (_ result: BukoliPointResult, _ point: BukoliPoint?) -> Void) {
+        if (!isInitialized()) {
+            assertionFailure("Bukoli SDK must be initialized.")
+        }
+        WebService.GET(uri: String(format:"point/%@", pointCode), parameters: nil, success: { (point: BukoliPoint) in
+            completion(point.state == 1 ? .enabled : .disabled, point)
+        }) { (error: Error) in
+            completion(.notFound, nil)
+        }
     }
     
     class func complete() {
@@ -66,6 +112,15 @@ public class Bukoli
         }
         else if (shouldAskPhoneNumber && phoneNumber == nil) {
             result = .phoneNumberMissing
+        }
+        
+        var parameters : [String: Any] = [:]
+        if (phoneNumber != nil) {
+            parameters["phone"] = phoneNumber
+        }
+        
+        if (result != .pointNotSelected) {
+            WebService.POST(uri: String(format: "point/%d/send", point!.id), parameters: parameters)
         }
         
         Bukoli.sharedInstance.completion(result, point, phoneNumber)

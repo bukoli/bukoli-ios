@@ -370,7 +370,6 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         currentLocation = lastKnownLocation
         let viewRegion = MKCoordinateRegionMakeWithDistance(currentLocation.coordinate, 25000, 25000)
         mapView.setRegion(viewRegion, animated: false)
-        self.updatePoints(false)
         
         // Center
         self.centerView.layer.shadowColor = UIColor.black.cgColor
@@ -389,8 +388,21 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         self.activityIndicator.color = Bukoli.sharedInstance.buttonBackgroundColor
         self.activityIndicator.backgroundColor = Bukoli.sharedInstance.buttonTextColor.withAlphaComponent(0.90)
         
-        // Location
-        startLocationMonitoring()
+        WebService.Authorize(success: {
+            // Location
+            self.updatePoints(false)
+            self.startLocationMonitoring()
+            
+        }, failure: { (error: Error) in
+            
+            self.activityIndicator.stopAnimating()
+            let alert = UIAlertController(title: "Hata", message: error.error, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Tamam", style: .cancel, handler: { (UIAlertAction) in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            self.present(alert, animated: true, completion: nil)
+        })
+
         
         // Information
         WebService.GET(uri: "information", parameters: nil, success: {
@@ -400,6 +412,7 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
             (error: Error) in
             // Ignore errors
         }
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

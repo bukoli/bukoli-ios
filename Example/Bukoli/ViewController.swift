@@ -39,22 +39,60 @@ class TableViewController: UITableViewController {
         }
         
         if (indexPath.row == 0){
+            Bukoli.setUser("1", "5551234567", "sdk@bukoli.com")
             Bukoli.select(self, { (result: BukoliResult, point: BukoliPoint?, phoneNumber: String?) in
                 switch(result) {
                 case .success:
                     self.handleSuccess(point, phoneNumber)
-                    break
                 case .phoneNumberMissing:
                     self.handlePhoneNumberMissing(point, phoneNumber)
-                    break
                 case .pointNotSelected:
                     self.handlePointNotSelected(point, phoneNumber)
-                    break
                 }
             })
         }
         else if (indexPath.row == 1){
             Bukoli.info(self)
+        }
+        else if (indexPath.row == 2){
+            let alert = UIAlertController(title: "Check Point Status", message: "Plase type point code", preferredStyle: .alert)
+            alert.addTextField(configurationHandler: { (textField) in
+                textField.placeholder = "TDR-1234"
+            })
+            alert.addAction(UIAlertAction(title: "Check", style: .cancel, handler: { (action) in
+                let pointCode = alert.textFields!.first!.text!
+                if (pointCode.characters.isEmpty) {
+                    let errorAlert = UIAlertController(title: "Error", message: "Plase type point code", preferredStyle: .alert)
+                    errorAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action) in
+                        self.present(alert, animated: true, completion: nil)
+                    }))
+                    self.present(errorAlert, animated: true, completion: nil)
+                }
+                
+                Bukoli.pointStatus(pointCode, { (result, point) in
+                    var title = ""
+                    var message = ""
+                    switch(result) {
+                    case .enabled:
+                        title = "Enabled"
+                        message = "\(point!.code!) - \(point!.name!) is enabled."
+                    case .disabled:
+                        title = "Disabled"
+                        message = "\(point!.code!) - \(point!.name!) is disabled."
+                    case .notFound:
+                        title = "Point Not Found"
+                        message = "Point not existed or removed."
+                    }
+                    
+                    let responseAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                    responseAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                    self.present(responseAlert, animated: true, completion: nil)
+                    
+                })
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+            
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
