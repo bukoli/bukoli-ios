@@ -151,7 +151,7 @@ import Bukoli
 Bukoli.info(self)
 ```
 
-### Bukoli Select Point
+### Bukoli Point Status
 
 First parameter is point code
 
