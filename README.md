@@ -9,14 +9,14 @@ You can sign up for a Bukoli account at http://www.bukoli.com.
 
 ## Requirements
 
-- iOS 9.0+
-- Xcode 8.0+
+- iOS 8.0+
+- Xcode 8.1+
 - Swift 3.0+
 
 ## Dependencies
 
-- [Alamofire 4.0+](https://github.com/Alamofire/Alamofire)
-- [AlamofireImage 3.0+](https://github.com/Alamofire/AlamofireImage)
+- [Alamofire 4.2+](https://github.com/Alamofire/Alamofire)
+- [AlamofireImage 3.2+](https://github.com/Alamofire/AlamofireImage)
 - [ObjectMapper 2.0+](https://github.com/Hearst-DD/ObjectMapper)
 
 ## Example
@@ -40,7 +40,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'Bukoli', '~> 1.1'
+    pod 'Bukoli', '~> 1.2'
 end
 ```
 

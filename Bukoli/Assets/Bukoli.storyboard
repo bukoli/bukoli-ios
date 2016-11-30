@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PFi-Aj-Uha">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -35,130 +36,157 @@
                         <viewControllerLayoutGuide type="bottom" id="gId-Rl-WbP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="K5t-J1-yXl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ph3-5u-zRB" userLabel="Close View">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="FaZ-nh-bg5" appends="YES" id="OIH-KE-3nj"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jq1-gd-6N2" customClass="BukoliRoundedView" customModule="Bukoli" customModuleProvider="target">
-                                <rect key="frame" x="20" y="108.5" width="335" height="450.5"/>
+                                <rect key="frame" x="20.5" y="62" width="279.5" height="444"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="0BV-eA-S9Z">
-                                        <rect key="frame" x="181" y="0.0" width="154" height="124"/>
+                                        <rect key="frame" x="125.5" y="0.0" width="154" height="124"/>
                                     </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gia-nC-czc" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="118.5"/>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nn3-Tg-6cd">
+                                        <rect key="frame" x="0.0" y="10" width="279.5" height="424"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Bukoli Nedir?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHK-8p-YHk">
-                                                <rect key="frame" x="15" y="25" width="103" height="19.5"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                <color key="textColor" red="0.95686274509803915" green="0.67843137254901964" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n0w-VE-6dD">
-                                                <rect key="frame" x="15" y="52.5" width="305" height="66"/>
-                                                <string key="text">Bukoli, %@ aldığınız ürünleri, ister mesai sonrası, isterseniz de yolunuzun üstünden kısacası size neresi uygunsa oradan teslim almanızı sağlayan yepyeni bir sistem. Anlaşmalı Bukoli noktalarından size en uygunu seçin ve kolinizi teslim alın.</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="eHK-8p-YHk" firstAttribute="leading" secondItem="Gia-nC-czc" secondAttribute="leading" constant="15" id="EOF-Dq-DHH"/>
-                                            <constraint firstAttribute="bottom" secondItem="n0w-VE-6dD" secondAttribute="bottom" id="Faj-LK-3be"/>
-                                            <constraint firstItem="n0w-VE-6dD" firstAttribute="leading" secondItem="Gia-nC-czc" secondAttribute="leading" constant="15" id="GH6-VH-D9m"/>
-                                            <constraint firstAttribute="trailing" secondItem="n0w-VE-6dD" secondAttribute="trailing" constant="15" id="Rq9-e9-kav"/>
-                                            <constraint firstItem="n0w-VE-6dD" firstAttribute="top" secondItem="eHK-8p-YHk" secondAttribute="bottom" constant="8" id="bvG-Ud-nPU"/>
-                                            <constraint firstItem="eHK-8p-YHk" firstAttribute="top" secondItem="Gia-nC-czc" secondAttribute="top" constant="25" id="xkr-cH-kCv"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" horizontalHuggingPriority="500" verticalHuggingPriority="500" translatesAutoresizingMaskIntoConstraints="NO" id="X4Y-Re-aTU">
-                                        <rect key="frame" x="0.0" y="118.5" width="335" height="332"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ghi-be-EZF">
-                                                <rect key="frame" x="15" y="10" width="68" height="68"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F8U-p4-Z4u">
+                                                <rect key="frame" x="0.0" y="0.0" width="279.5" height="424"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gia-nC-czc" userLabel="Top Content View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="279.5" height="112"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Bukoli Nedir?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHK-8p-YHk">
+                                                                <rect key="frame" x="15" y="5" width="103" height="20"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                                <color key="textColor" red="0.95686274509803915" green="0.67843137254901964" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n0w-VE-6dD">
+                                                                <rect key="frame" x="15" y="33" width="249.5" height="79"/>
+                                                                <string key="text">Bukoli, %@ aldığınız ürünleri, ister mesai sonrası, isterseniz de yolunuzun üstünden kısacası size neresi uygunsa oradan teslim almanızı sağlayan yepyeni bir sistem. Anlaşmalı Bukoli noktalarından size en uygunu seçin ve kolinizi teslim alın.</string>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstItem="eHK-8p-YHk" firstAttribute="leading" secondItem="Gia-nC-czc" secondAttribute="leading" constant="15" id="EOF-Dq-DHH"/>
+                                                            <constraint firstAttribute="bottom" secondItem="n0w-VE-6dD" secondAttribute="bottom" id="Faj-LK-3be"/>
+                                                            <constraint firstItem="n0w-VE-6dD" firstAttribute="leading" secondItem="Gia-nC-czc" secondAttribute="leading" constant="15" id="GH6-VH-D9m"/>
+                                                            <constraint firstAttribute="trailing" secondItem="n0w-VE-6dD" secondAttribute="trailing" constant="15" id="Rq9-e9-kav"/>
+                                                            <constraint firstItem="n0w-VE-6dD" firstAttribute="top" secondItem="eHK-8p-YHk" secondAttribute="bottom" constant="8" id="bvG-Ud-nPU"/>
+                                                            <constraint firstItem="eHK-8p-YHk" firstAttribute="top" secondItem="Gia-nC-czc" secondAttribute="top" constant="5" id="xkr-cH-kCv"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" horizontalHuggingPriority="500" verticalHuggingPriority="500" translatesAutoresizingMaskIntoConstraints="NO" id="X4Y-Re-aTU" userLabel="Bottom Content View">
+                                                        <rect key="frame" x="0.0" y="112" width="279.5" height="312"/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ghi-be-EZF">
+                                                                <rect key="frame" x="15" y="10" width="68" height="68"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="68" id="hOd-Dw-OTk"/>
+                                                                    <constraint firstAttribute="width" constant="68" id="x1e-dX-8SJ"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%@ alışverişinizi tamamlayın ve teslimat seçeneklerinde Bukoli'yi seçin" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hze-6f-dyp">
+                                                                <rect key="frame" x="98" y="10" width="166.5" height="68"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="xxr-xY-0Km">
+                                                                <rect key="frame" x="15" y="88" width="68" height="68"/>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size en uygun Bukoli noktasını haritadan seçin" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRP-5y-yeA">
+                                                                <rect key="frame" x="98" y="88" width="166.5" height="68"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3" translatesAutoresizingMaskIntoConstraints="NO" id="URd-J9-GX4">
+                                                                <rect key="frame" x="15" y="166" width="68" height="68"/>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cep telefonunuza gelen sms bilgilerini saklayın" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3X-Mg-73W">
+                                                                <rect key="frame" x="98" y="166" width="166.5" height="68"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4" translatesAutoresizingMaskIntoConstraints="NO" id="PPq-q4-N96">
+                                                                <rect key="frame" x="15" y="244" width="68" height="68"/>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seçtiğiniz Bukoli teslimat noktasında teslimat kodunu paylaşın ve kolinizi güvenle teslim alın" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dug-7e-FL8">
+                                                                <rect key="frame" x="98" y="244" width="166.5" height="68"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstItem="PPq-q4-N96" firstAttribute="top" secondItem="URd-J9-GX4" secondAttribute="bottom" constant="10" id="1zW-St-am2"/>
+                                                            <constraint firstItem="xxr-xY-0Km" firstAttribute="top" secondItem="Ghi-be-EZF" secondAttribute="bottom" constant="10" id="2no-HJ-Q1H"/>
+                                                            <constraint firstItem="dug-7e-FL8" firstAttribute="bottom" secondItem="PPq-q4-N96" secondAttribute="bottom" id="50o-oh-gx6"/>
+                                                            <constraint firstItem="URd-J9-GX4" firstAttribute="width" secondItem="Ghi-be-EZF" secondAttribute="width" id="9wN-Za-JLo"/>
+                                                            <constraint firstItem="J3X-Mg-73W" firstAttribute="leading" secondItem="URd-J9-GX4" secondAttribute="trailing" constant="15" id="DrZ-mF-mU2"/>
+                                                            <constraint firstAttribute="trailing" secondItem="dug-7e-FL8" secondAttribute="trailing" constant="15" id="Gb5-Wt-C6y"/>
+                                                            <constraint firstItem="vRP-5y-yeA" firstAttribute="top" secondItem="xxr-xY-0Km" secondAttribute="top" id="Okf-HW-IqM"/>
+                                                            <constraint firstItem="J3X-Mg-73W" firstAttribute="bottom" secondItem="URd-J9-GX4" secondAttribute="bottom" id="OnW-gH-vl1"/>
+                                                            <constraint firstItem="xxr-xY-0Km" firstAttribute="leading" secondItem="Ghi-be-EZF" secondAttribute="leading" id="Qd7-mF-r3I"/>
+                                                            <constraint firstItem="URd-J9-GX4" firstAttribute="height" secondItem="Ghi-be-EZF" secondAttribute="height" id="RwJ-9Y-Wka"/>
+                                                            <constraint firstItem="Hze-6f-dyp" firstAttribute="top" secondItem="Ghi-be-EZF" secondAttribute="top" id="UNs-9B-AoB"/>
+                                                            <constraint firstItem="Hze-6f-dyp" firstAttribute="bottom" secondItem="Ghi-be-EZF" secondAttribute="bottom" id="W4i-ya-BDg"/>
+                                                            <constraint firstItem="Ghi-be-EZF" firstAttribute="leading" secondItem="X4Y-Re-aTU" secondAttribute="leading" constant="15" id="YDv-iC-3n0"/>
+                                                            <constraint firstItem="xxr-xY-0Km" firstAttribute="height" secondItem="Ghi-be-EZF" secondAttribute="height" id="aUh-p4-Uyi"/>
+                                                            <constraint firstAttribute="bottom" secondItem="PPq-q4-N96" secondAttribute="bottom" id="bTw-Cy-RfY"/>
+                                                            <constraint firstItem="J3X-Mg-73W" firstAttribute="top" secondItem="URd-J9-GX4" secondAttribute="top" id="dGu-zv-ZbX"/>
+                                                            <constraint firstItem="PPq-q4-N96" firstAttribute="leading" secondItem="Ghi-be-EZF" secondAttribute="leading" id="eBP-v7-R1a"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Hze-6f-dyp" secondAttribute="trailing" constant="15" id="fjP-BM-PW0"/>
+                                                            <constraint firstItem="dug-7e-FL8" firstAttribute="leading" secondItem="PPq-q4-N96" secondAttribute="trailing" constant="15" id="gOO-yK-wR3"/>
+                                                            <constraint firstItem="Hze-6f-dyp" firstAttribute="leading" secondItem="Ghi-be-EZF" secondAttribute="trailing" constant="15" id="k1h-nS-13I"/>
+                                                            <constraint firstItem="xxr-xY-0Km" firstAttribute="width" secondItem="Ghi-be-EZF" secondAttribute="width" id="lza-BU-CKO"/>
+                                                            <constraint firstItem="vRP-5y-yeA" firstAttribute="bottom" secondItem="xxr-xY-0Km" secondAttribute="bottom" id="pup-vw-pRw"/>
+                                                            <constraint firstItem="PPq-q4-N96" firstAttribute="width" secondItem="Ghi-be-EZF" secondAttribute="width" id="r56-F6-K0G"/>
+                                                            <constraint firstItem="vRP-5y-yeA" firstAttribute="leading" secondItem="xxr-xY-0Km" secondAttribute="trailing" constant="15" id="sQC-rk-LFq"/>
+                                                            <constraint firstItem="URd-J9-GX4" firstAttribute="leading" secondItem="Ghi-be-EZF" secondAttribute="leading" id="sR6-C7-Bxw"/>
+                                                            <constraint firstAttribute="trailing" secondItem="J3X-Mg-73W" secondAttribute="trailing" constant="15" id="swc-Ek-ryh"/>
+                                                            <constraint firstItem="dug-7e-FL8" firstAttribute="top" secondItem="PPq-q4-N96" secondAttribute="top" id="t4V-TT-BEs"/>
+                                                            <constraint firstItem="PPq-q4-N96" firstAttribute="height" secondItem="Ghi-be-EZF" secondAttribute="height" id="tii-0E-do8"/>
+                                                            <constraint firstItem="URd-J9-GX4" firstAttribute="top" secondItem="xxr-xY-0Km" secondAttribute="bottom" constant="10" id="v8R-My-tkG"/>
+                                                            <constraint firstAttribute="trailing" secondItem="vRP-5y-yeA" secondAttribute="trailing" constant="15" id="wVQ-5m-RmQ"/>
+                                                            <constraint firstItem="Ghi-be-EZF" firstAttribute="top" secondItem="X4Y-Re-aTU" secondAttribute="top" constant="10" id="xrX-mF-Uab"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="68" id="hOd-Dw-OTk"/>
-                                                    <constraint firstAttribute="width" constant="68" id="x1e-dX-8SJ"/>
+                                                    <constraint firstItem="X4Y-Re-aTU" firstAttribute="top" secondItem="Gia-nC-czc" secondAttribute="bottom" id="8pC-A2-Si4"/>
+                                                    <constraint firstAttribute="bottom" secondItem="X4Y-Re-aTU" secondAttribute="bottom" id="BrS-oa-t3z"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Gia-nC-czc" secondAttribute="trailing" id="OWE-4f-PYR"/>
+                                                    <constraint firstItem="Gia-nC-czc" firstAttribute="leading" secondItem="F8U-p4-Z4u" secondAttribute="leading" id="dde-9V-JnH"/>
+                                                    <constraint firstAttribute="trailing" secondItem="X4Y-Re-aTU" secondAttribute="trailing" id="poQ-Cv-Ili"/>
+                                                    <constraint firstItem="Gia-nC-czc" firstAttribute="top" secondItem="F8U-p4-Z4u" secondAttribute="top" id="wcC-Oo-hN0"/>
+                                                    <constraint firstItem="X4Y-Re-aTU" firstAttribute="leading" secondItem="F8U-p4-Z4u" secondAttribute="leading" id="zAy-35-KNW"/>
                                                 </constraints>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%@ alışverişinizi tamamlayın ve teslimat seçeneklerinde Bukoli'yi seçin" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hze-6f-dyp">
-                                                <rect key="frame" x="98" y="10" width="222" height="68"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="xxr-xY-0Km">
-                                                <rect key="frame" x="15" y="88" width="68" height="68"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size en uygun Bukoli noktasını haritadan seçin" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRP-5y-yeA">
-                                                <rect key="frame" x="98" y="88" width="222" height="68"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3" translatesAutoresizingMaskIntoConstraints="NO" id="URd-J9-GX4">
-                                                <rect key="frame" x="15" y="166" width="68" height="68"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cep telefonunuza gelen sms bilgilerini saklayın" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3X-Mg-73W">
-                                                <rect key="frame" x="98" y="166" width="222" height="68"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4" translatesAutoresizingMaskIntoConstraints="NO" id="PPq-q4-N96">
-                                                <rect key="frame" x="15" y="244" width="68" height="68"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seçtiğiniz Bukoli teslimat noktasında teslimat kodunu paylaşın ve kolinizi güvenle teslim alın" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dug-7e-FL8">
-                                                <rect key="frame" x="98" y="244" width="222" height="68"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="PPq-q4-N96" firstAttribute="top" secondItem="URd-J9-GX4" secondAttribute="bottom" constant="10" id="1zW-St-am2"/>
-                                            <constraint firstItem="xxr-xY-0Km" firstAttribute="top" secondItem="Ghi-be-EZF" secondAttribute="bottom" constant="10" id="2no-HJ-Q1H"/>
-                                            <constraint firstItem="dug-7e-FL8" firstAttribute="bottom" secondItem="PPq-q4-N96" secondAttribute="bottom" id="50o-oh-gx6"/>
-                                            <constraint firstItem="URd-J9-GX4" firstAttribute="width" secondItem="Ghi-be-EZF" secondAttribute="width" id="9wN-Za-JLo"/>
-                                            <constraint firstItem="J3X-Mg-73W" firstAttribute="leading" secondItem="URd-J9-GX4" secondAttribute="trailing" constant="15" id="DrZ-mF-mU2"/>
-                                            <constraint firstAttribute="trailing" secondItem="dug-7e-FL8" secondAttribute="trailing" constant="15" id="Gb5-Wt-C6y"/>
-                                            <constraint firstItem="vRP-5y-yeA" firstAttribute="top" secondItem="xxr-xY-0Km" secondAttribute="top" id="Okf-HW-IqM"/>
-                                            <constraint firstItem="J3X-Mg-73W" firstAttribute="bottom" secondItem="URd-J9-GX4" secondAttribute="bottom" id="OnW-gH-vl1"/>
-                                            <constraint firstItem="xxr-xY-0Km" firstAttribute="leading" secondItem="Ghi-be-EZF" secondAttribute="leading" id="Qd7-mF-r3I"/>
-                                            <constraint firstItem="URd-J9-GX4" firstAttribute="height" secondItem="Ghi-be-EZF" secondAttribute="height" id="RwJ-9Y-Wka"/>
-                                            <constraint firstItem="Hze-6f-dyp" firstAttribute="top" secondItem="Ghi-be-EZF" secondAttribute="top" id="UNs-9B-AoB"/>
-                                            <constraint firstItem="Hze-6f-dyp" firstAttribute="bottom" secondItem="Ghi-be-EZF" secondAttribute="bottom" id="W4i-ya-BDg"/>
-                                            <constraint firstItem="Ghi-be-EZF" firstAttribute="leading" secondItem="X4Y-Re-aTU" secondAttribute="leading" constant="15" id="YDv-iC-3n0"/>
-                                            <constraint firstItem="xxr-xY-0Km" firstAttribute="height" secondItem="Ghi-be-EZF" secondAttribute="height" id="aUh-p4-Uyi"/>
-                                            <constraint firstAttribute="bottom" secondItem="PPq-q4-N96" secondAttribute="bottom" constant="20" id="bTw-Cy-RfY"/>
-                                            <constraint firstItem="J3X-Mg-73W" firstAttribute="top" secondItem="URd-J9-GX4" secondAttribute="top" id="dGu-zv-ZbX"/>
-                                            <constraint firstItem="PPq-q4-N96" firstAttribute="leading" secondItem="Ghi-be-EZF" secondAttribute="leading" id="eBP-v7-R1a"/>
-                                            <constraint firstAttribute="trailing" secondItem="Hze-6f-dyp" secondAttribute="trailing" constant="15" id="fjP-BM-PW0"/>
-                                            <constraint firstItem="dug-7e-FL8" firstAttribute="leading" secondItem="PPq-q4-N96" secondAttribute="trailing" constant="15" id="gOO-yK-wR3"/>
-                                            <constraint firstItem="Hze-6f-dyp" firstAttribute="leading" secondItem="Ghi-be-EZF" secondAttribute="trailing" constant="15" id="k1h-nS-13I"/>
-                                            <constraint firstItem="xxr-xY-0Km" firstAttribute="width" secondItem="Ghi-be-EZF" secondAttribute="width" id="lza-BU-CKO"/>
-                                            <constraint firstItem="vRP-5y-yeA" firstAttribute="bottom" secondItem="xxr-xY-0Km" secondAttribute="bottom" id="pup-vw-pRw"/>
-                                            <constraint firstItem="PPq-q4-N96" firstAttribute="width" secondItem="Ghi-be-EZF" secondAttribute="width" id="r56-F6-K0G"/>
-                                            <constraint firstItem="vRP-5y-yeA" firstAttribute="leading" secondItem="xxr-xY-0Km" secondAttribute="trailing" constant="15" id="sQC-rk-LFq"/>
-                                            <constraint firstItem="URd-J9-GX4" firstAttribute="leading" secondItem="Ghi-be-EZF" secondAttribute="leading" id="sR6-C7-Bxw"/>
-                                            <constraint firstAttribute="trailing" secondItem="J3X-Mg-73W" secondAttribute="trailing" constant="15" id="swc-Ek-ryh"/>
-                                            <constraint firstItem="dug-7e-FL8" firstAttribute="top" secondItem="PPq-q4-N96" secondAttribute="top" id="t4V-TT-BEs"/>
-                                            <constraint firstItem="PPq-q4-N96" firstAttribute="height" secondItem="Ghi-be-EZF" secondAttribute="height" id="tii-0E-do8"/>
-                                            <constraint firstItem="URd-J9-GX4" firstAttribute="top" secondItem="xxr-xY-0Km" secondAttribute="bottom" constant="10" id="v8R-My-tkG"/>
-                                            <constraint firstAttribute="trailing" secondItem="vRP-5y-yeA" secondAttribute="trailing" constant="15" id="wVQ-5m-RmQ"/>
-                                            <constraint firstItem="Ghi-be-EZF" firstAttribute="top" secondItem="X4Y-Re-aTU" secondAttribute="top" constant="10" id="xrX-mF-Uab"/>
+                                            <constraint firstAttribute="trailing" secondItem="F8U-p4-Z4u" secondAttribute="trailing" id="0De-2g-yaN"/>
+                                            <constraint firstItem="F8U-p4-Z4u" firstAttribute="top" secondItem="nn3-Tg-6cd" secondAttribute="top" id="J6T-cN-Kee"/>
+                                            <constraint firstItem="F8U-p4-Z4u" firstAttribute="leading" secondItem="nn3-Tg-6cd" secondAttribute="leading" id="JCs-nt-8sD"/>
+                                            <constraint firstAttribute="bottom" secondItem="F8U-p4-Z4u" secondAttribute="bottom" id="Y1i-PM-LmW"/>
                                         </constraints>
-                                    </view>
+                                    </scrollView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1PO-Jt-J9M">
-                                        <rect key="frame" x="297" y="0.0" width="38" height="42"/>
+                                        <rect key="frame" x="241.5" y="0.0" width="38" height="42"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                         <state key="normal" image="Close"/>
                                         <connections>
@@ -169,30 +197,30 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="1PO-Jt-J9M" secondAttribute="trailing" id="3rQ-98-xrV"/>
+                                    <constraint firstItem="nn3-Tg-6cd" firstAttribute="leading" secondItem="jq1-gd-6N2" secondAttribute="leading" id="5X0-lT-s99"/>
                                     <constraint firstAttribute="trailing" secondItem="0BV-eA-S9Z" secondAttribute="trailing" id="D3m-Ts-QZP"/>
-                                    <constraint firstItem="Gia-nC-czc" firstAttribute="top" secondItem="jq1-gd-6N2" secondAttribute="top" id="Iw7-gU-deS"/>
-                                    <constraint firstItem="X4Y-Re-aTU" firstAttribute="leading" secondItem="jq1-gd-6N2" secondAttribute="leading" id="a32-fM-qsz"/>
-                                    <constraint firstAttribute="trailing" secondItem="Gia-nC-czc" secondAttribute="trailing" id="cgJ-GC-X4f"/>
-                                    <constraint firstAttribute="bottom" secondItem="X4Y-Re-aTU" secondAttribute="bottom" id="fe0-ui-Kv5"/>
+                                    <constraint firstItem="nn3-Tg-6cd" firstAttribute="top" secondItem="jq1-gd-6N2" secondAttribute="top" constant="10" id="Drz-XP-yir"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="374" id="N25-k3-qTR"/>
+                                    <constraint firstAttribute="bottom" secondItem="nn3-Tg-6cd" secondAttribute="bottom" constant="10" id="a2C-Q3-VYu"/>
                                     <constraint firstItem="0BV-eA-S9Z" firstAttribute="top" secondItem="jq1-gd-6N2" secondAttribute="top" id="gtD-Wo-oHl"/>
                                     <constraint firstItem="1PO-Jt-J9M" firstAttribute="top" secondItem="jq1-gd-6N2" secondAttribute="top" id="hkX-iv-KSI"/>
-                                    <constraint firstItem="Gia-nC-czc" firstAttribute="leading" secondItem="jq1-gd-6N2" secondAttribute="leading" id="poK-pt-sew"/>
-                                    <constraint firstItem="X4Y-Re-aTU" firstAttribute="top" secondItem="Gia-nC-czc" secondAttribute="bottom" id="uU0-OL-ZED"/>
-                                    <constraint firstAttribute="trailing" secondItem="X4Y-Re-aTU" secondAttribute="trailing" id="ybp-G2-AoG"/>
+                                    <constraint firstItem="F8U-p4-Z4u" firstAttribute="width" secondItem="jq1-gd-6N2" secondAttribute="width" id="mIv-st-3NV"/>
+                                    <constraint firstAttribute="trailing" secondItem="nn3-Tg-6cd" secondAttribute="trailing" id="oDt-Tn-skG"/>
+                                    <constraint firstItem="F8U-p4-Z4u" firstAttribute="height" secondItem="jq1-gd-6N2" secondAttribute="height" priority="750" constant="-20" id="pPF-jp-O25"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="gId-Rl-WbP" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jq1-gd-6N2" secondAttribute="bottom" id="9yx-Ge-S3C"/>
-                            <constraint firstAttribute="trailing" secondItem="jq1-gd-6N2" secondAttribute="trailing" constant="20" id="AvA-Lw-EtU"/>
-                            <constraint firstItem="jq1-gd-6N2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="K5t-J1-yXl" secondAttribute="topMargin" id="Cb9-DD-w3e"/>
+                            <constraint firstItem="jq1-gd-6N2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="K5t-J1-yXl" secondAttribute="top" constant="15" id="Ifi-9T-jpd"/>
                             <constraint firstItem="ph3-5u-zRB" firstAttribute="top" secondItem="K5t-J1-yXl" secondAttribute="top" id="JMF-0w-qNK"/>
                             <constraint firstItem="ph3-5u-zRB" firstAttribute="leading" secondItem="K5t-J1-yXl" secondAttribute="leading" id="PVc-OS-Igg"/>
                             <constraint firstItem="gId-Rl-WbP" firstAttribute="top" secondItem="ph3-5u-zRB" secondAttribute="bottom" id="Qlp-Uc-Uym"/>
+                            <constraint firstItem="jq1-gd-6N2" firstAttribute="centerX" secondItem="K5t-J1-yXl" secondAttribute="centerX" id="f3h-ce-IyP"/>
+                            <constraint firstItem="jq1-gd-6N2" firstAttribute="width" relation="lessThanOrEqual" secondItem="K5t-J1-yXl" secondAttribute="width" constant="-40" id="kjl-dv-oui"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="jq1-gd-6N2" secondAttribute="bottom" constant="15" id="mHX-CI-h2n"/>
                             <constraint firstItem="jq1-gd-6N2" firstAttribute="centerY" secondItem="K5t-J1-yXl" secondAttribute="centerY" id="p0w-t4-O0r"/>
-                            <constraint firstItem="jq1-gd-6N2" firstAttribute="leading" secondItem="K5t-J1-yXl" secondAttribute="leading" constant="20" id="qJ3-GH-6pP"/>
                             <constraint firstAttribute="trailing" secondItem="ph3-5u-zRB" secondAttribute="trailing" id="sSz-bx-cOr"/>
                         </constraints>
                     </view>
@@ -219,52 +247,52 @@
                         <viewControllerLayoutGuide type="bottom" id="uHS-tW-sIr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oRv-hX-8tg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="180" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="VJS-9H-oRX">
-                                <rect key="frame" x="0.0" y="64" width="375" height="551"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="452"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="BukoliPointCell" id="Svm-Ma-wWg" customClass="BukoliPointCell" customModule="Bukoli" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1" width="375" height="180"/>
+                                        <rect key="frame" x="0.0" y="1" width="320" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Svm-Ma-wWg" id="jIJ-C5-c95">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="179"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e5D-WL-4XL">
-                                                    <rect key="frame" x="10" y="10" width="150" height="112.5"/>
+                                                    <rect key="frame" x="10" y="10" width="150" height="113"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="150" id="Ode-vV-mLT"/>
                                                         <constraint firstAttribute="width" secondItem="e5D-WL-4XL" secondAttribute="height" multiplier="4:3" id="oxR-sS-nOi"/>
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cf-pU-8Eb">
-                                                    <rect key="frame" x="160" y="10" width="207" height="112.5"/>
+                                                    <rect key="frame" x="160" y="10" width="152" height="113"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Nokta Adı" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5tl-vU-HlC">
-                                                            <rect key="frame" x="8" y="0.0" width="191" height="17"/>
+                                                            <rect key="frame" x="8" y="0.0" width="136" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" text="Adres" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVK-IP-Dyy">
-                                                            <rect key="frame" x="8" y="17" width="191" height="12"/>
+                                                            <rect key="frame" x="8" y="17" width="136" height="12"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Çalışma Saatleri" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THf-tz-0ar">
-                                                            <rect key="frame" x="8" y="62" width="191" height="14.5"/>
+                                                            <rect key="frame" x="8" y="62" width="136" height="15"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Hafta içi: 08:00 - 24:00 Cumartesi: 08:00  - 24:00 Pazar: 09:00 - 24:00" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DpV-uP-bzR">
-                                                            <rect key="frame" x="8" y="76.5" width="191" height="36"/>
+                                                            <rect key="frame" x="8" y="77" width="136" height="36"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -288,16 +316,16 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vd0-Zx-Ig7" customClass="BukoliDistanceLabel" customModule="Bukoli" customModuleProvider="target">
-                                                    <rect key="frame" x="106.5" y="104" width="49.5" height="14.5"/>
+                                                    <rect key="frame" x="106" y="104" width="50" height="15"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqh-SC-QSu" customClass="BukoliButton" customModule="Bukoli" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="132.5" width="355" height="37"/>
+                                                    <rect key="frame" x="10" y="133" width="300" height="36"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
-                                                    <state key="normal" title="Bu Adrese Gönder">
+                                                    <state key="normal" title="Bu Noktaya Gönder">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -336,16 +364,16 @@
                                 </connections>
                             </tableView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WE2-yT-H3L">
-                                <rect key="frame" x="0.0" y="64" width="375" height="551"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="452"/>
                                 <connections>
                                     <outlet property="delegate" destination="4hT-ui-i4s" id="Ol8-f1-hXe"/>
                                 </connections>
                             </mapView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" image="Annotation Center" translatesAutoresizingMaskIntoConstraints="NO" id="zVk-OX-ibv">
-                                <rect key="frame" x="165" y="305" width="45" height="45"/>
+                                <rect key="frame" x="138" y="256" width="45" height="45"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kRx-fj-jJg" userLabel="Information View">
-                                <rect key="frame" x="0.0" y="615" width="375" height="52"/>
+                                <rect key="frame" x="0.0" y="516" width="320" height="52"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="nE8-X0-tCa">
                                         <rect key="frame" x="0.0" y="2" width="48" height="48"/>
@@ -354,7 +382,7 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mg7-cy-w0u">
-                                        <rect key="frame" x="323" y="0.0" width="52" height="52"/>
+                                        <rect key="frame" x="268" y="0.0" width="52" height="52"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                         <state key="normal" image="Info"/>
@@ -363,7 +391,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Bukoli" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5F-8W-x6k">
-                                        <rect key="frame" x="63" y="0.0" width="260" height="52"/>
+                                        <rect key="frame" x="63" y="0.0" width="205" height="52"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -386,11 +414,11 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N7q-UW-71x">
-                                <rect key="frame" x="311" y="499" width="44" height="44"/>
+                                <rect key="frame" x="256" y="400" width="44" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDd-6E-9bQ" customClass="BukoliRoundedButton" customModule="Bukoli" customModuleProvider="target">
-                                <rect key="frame" x="311" y="499" width="44" height="44"/>
+                                <rect key="frame" x="256" y="400" width="44" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="KDd-6E-9bQ" secondAttribute="height" id="wSc-qy-yAB"/>
@@ -404,11 +432,11 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VTI-AM-89k">
-                                <rect key="frame" x="311" y="551" width="44" height="44"/>
+                                <rect key="frame" x="256" y="452" width="44" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7t9-F9-uOv" customClass="BukoliFabButton" customModule="Bukoli" customModuleProvider="target">
-                                <rect key="frame" x="311" y="551" width="44" height="44"/>
+                                <rect key="frame" x="256" y="452" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="7t9-F9-uOv" secondAttribute="height" id="pzt-cv-x3a"/>
                                 </constraints>
@@ -420,7 +448,7 @@
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="2tB-UT-Pfu">
-                                <rect key="frame" x="157.5" y="303.5" width="60" height="60"/>
+                                <rect key="frame" x="130" y="254" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="NTx-YL-omc"/>
                                     <constraint firstAttribute="width" secondItem="2tB-UT-Pfu" secondAttribute="height" multiplier="1:1" id="tuC-Sz-FYb"/>
@@ -501,31 +529,31 @@
                         <viewControllerLayoutGuide type="bottom" id="6IH-JZ-A85"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OTS-Bd-Evn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JBJ-Vz-0UF" userLabel="Close View">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Lsi-mb-5g0" appends="YES" id="dyD-yp-cYa"/>
                                 </connections>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YIy-ye-7gq">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIy-ye-7gq">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="eZi-AF-GyO">
-                                    <size key="itemSize" width="320" height="548"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="eZi-AF-GyO">
+                                    <size key="itemSize" width="300" height="548"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BukoliPointDialogCell" id="jte-kE-vPu" customClass="BukoliPointDialogCell" customModule="Bukoli" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="320" height="548"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="548"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="548"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e76-C2-Nbm" userLabel="Close View">
@@ -534,7 +562,7 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQu-Gi-YI2" customClass="BukoliRoundedView" customModule="Bukoli" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="174" width="300" height="200.5"/>
+                                                    <rect key="frame" x="0.0" y="178.5" width="300" height="192"/>
                                                     <subviews>
                                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="zwG-5u-ZC4">
                                                             <rect key="frame" x="146" y="0.0" width="154" height="124"/>
@@ -566,39 +594,38 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="38e-cG-C4B">
-                                                            <rect key="frame" x="8" y="43.5" width="284" height="105"/>
+                                                            <rect key="frame" x="8" y="43.5" width="284" height="96.5"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="frt-Tf-l1m">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="140" height="105"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="96.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="frt-Tf-l1m" secondAttribute="height" multiplier="4:3" id="N8g-wF-Tbh"/>
-                                                                        <constraint firstAttribute="width" constant="140" id="kfr-Ln-Z6s"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqa-QE-VRM" customClass="BukoliDistanceLabel" customModule="Bukoli" customModuleProvider="target">
-                                                                    <rect key="frame" x="86.5" y="86.5" width="49.5" height="14.5"/>
+                                                                    <rect key="frame" x="74.5" y="78" width="49.5" height="14.5"/>
                                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pI5-0q-QfC">
-                                                                    <rect key="frame" x="140" y="0.0" width="144" height="105"/>
+                                                                    <rect key="frame" x="128" y="0.0" width="156" height="96.5"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" text="Adres" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hna-Fq-zeG">
-                                                                            <rect key="frame" x="8" y="0.0" width="128" height="14.5"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Adres" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="hna-Fq-zeG">
+                                                                            <rect key="frame" x="8" y="0.0" width="140" height="13.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Çalışma Saatleri" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79C-bt-qY7">
-                                                                            <rect key="frame" x="8" y="54.5" width="128" height="14.5"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                            <nil key="textColor"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Hafta içi: 08:00 - 24:00 Cumartesi: 08:00  - 24:00 Pazar: 09:00 - 24:00" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cld-1U-9ZJ">
-                                                                            <rect key="frame" x="8" y="69" width="128" height="36"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Çalışma Saatleri" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79C-bt-qY7">
+                                                                            <rect key="frame" x="8" y="52" width="140" height="12"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Hafta içi: 08:00 - 24:00 Cumartesi: 08:00  - 24:00 Pazar: 09:00 - 24:00" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cld-1U-9ZJ">
+                                                                            <rect key="frame" x="8" y="64" width="140" height="32.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -629,6 +656,7 @@
                                                                 <constraint firstAttribute="trailing" secondItem="pI5-0q-QfC" secondAttribute="trailing" id="W3w-RG-BWo"/>
                                                                 <constraint firstItem="pI5-0q-QfC" firstAttribute="leading" secondItem="frt-Tf-l1m" secondAttribute="trailing" id="Yy3-cU-am3"/>
                                                                 <constraint firstItem="frt-Tf-l1m" firstAttribute="leading" secondItem="38e-cG-C4B" secondAttribute="leading" id="obM-CP-cdR"/>
+                                                                <constraint firstItem="frt-Tf-l1m" firstAttribute="width" secondItem="38e-cG-C4B" secondAttribute="width" multiplier="0.45" id="tp0-40-2xb"/>
                                                             </constraints>
                                                         </view>
                                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRM-16-6Tx">
@@ -640,10 +668,10 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ESN-Tc-S5a" customClass="BukoliButton" customModule="Bukoli" customModuleProvider="target">
-                                                            <rect key="frame" x="8" y="156.5" width="284" height="36"/>
+                                                            <rect key="frame" x="8" y="148" width="284" height="36"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
-                                                            <state key="normal" title="Bu Adrese Gönder">
+                                                            <state key="normal" title="Bu Noktaya Gönder">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
@@ -676,8 +704,8 @@
                                         </view>
                                         <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="RQu-Gi-YI2" secondAttribute="trailing" constant="10" id="0cg-nD-vXX"/>
-                                            <constraint firstItem="RQu-Gi-YI2" firstAttribute="leading" secondItem="jte-kE-vPu" secondAttribute="leading" constant="10" id="4zX-t6-Ltz"/>
+                                            <constraint firstAttribute="trailing" secondItem="RQu-Gi-YI2" secondAttribute="trailing" id="0cg-nD-vXX"/>
+                                            <constraint firstItem="RQu-Gi-YI2" firstAttribute="leading" secondItem="jte-kE-vPu" secondAttribute="leading" id="4zX-t6-Ltz"/>
                                             <constraint firstItem="RQu-Gi-YI2" firstAttribute="centerY" secondItem="jte-kE-vPu" secondAttribute="centerY" id="q4p-cM-4Ep"/>
                                         </constraints>
                                         <connections>
@@ -699,7 +727,7 @@
                                 </connections>
                             </collectionView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Swipe" translatesAutoresizingMaskIntoConstraints="NO" id="tdS-TN-3bH">
-                                <rect key="frame" x="147.5" y="527" width="80" height="80"/>
+                                <rect key="frame" x="120" y="428" width="80" height="80"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -740,36 +768,36 @@
                         <viewControllerLayoutGuide type="bottom" id="vgh-p3-TpE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="H06-S0-KWv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hjs-iB-NyF" userLabel="Close View">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="kGT-wp-bzf" appends="YES" id="B1a-jW-rMY"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tLR-MB-eCq" customClass="BukoliRoundedView" customModule="Bukoli" customModuleProvider="target">
-                                <rect key="frame" x="10" y="248" width="355" height="171"/>
+                                <rect key="frame" x="17.5" y="191" width="285" height="186.5"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="KQg-ui-o3z">
-                                        <rect key="frame" x="201" y="0.0" width="154" height="124"/>
+                                        <rect key="frame" x="131" y="0.0" width="154" height="124"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bukoli teslimat noktanız başarıyla eklenmiştir." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3a3-w5-hov">
-                                        <rect key="frame" x="40" y="20" width="275" height="16"/>
+                                        <rect key="frame" x="40" y="20" width="205" height="31.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lütfen teslimat kodunun iletilmesini istediğiniz cep telefonu numarasını giriniz." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3W-BL-9TV">
-                                        <rect key="frame" x="8" y="44" width="339" height="29"/>
+                                        <rect key="frame" x="8" y="59.5" width="269" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Telefon Numarası" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="esM-FW-uVR">
-                                        <rect key="frame" x="8" y="89" width="339" height="30"/>
+                                        <rect key="frame" x="8" y="104.5" width="269" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -778,7 +806,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmn-4d-hpL" customClass="BukoliButton" customModule="Bukoli" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="127" width="339" height="36"/>
+                                        <rect key="frame" x="8" y="142.5" width="269" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
                                         <state key="normal" title="Kaydet">
@@ -789,7 +817,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jiJ-xC-b5A">
-                                        <rect key="frame" x="317" y="0.0" width="38" height="42"/>
+                                        <rect key="frame" x="247" y="0.0" width="38" height="42"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                         <state key="normal" image="Close"/>
                                         <connections>
@@ -808,6 +836,7 @@
                                     <constraint firstAttribute="trailing" secondItem="zmn-4d-hpL" secondAttribute="trailing" constant="8" id="DoB-o7-UyH"/>
                                     <constraint firstAttribute="trailing" secondItem="jiJ-xC-b5A" secondAttribute="trailing" id="HBN-R4-VyT"/>
                                     <constraint firstItem="jiJ-xC-b5A" firstAttribute="top" secondItem="tLR-MB-eCq" secondAttribute="top" id="LYn-kT-2k7"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="394" id="Tc0-je-Cdd"/>
                                     <constraint firstItem="zmn-4d-hpL" firstAttribute="top" secondItem="esM-FW-uVR" secondAttribute="bottom" constant="8" id="Uq5-Yf-zeO"/>
                                     <constraint firstItem="zmn-4d-hpL" firstAttribute="leading" secondItem="tLR-MB-eCq" secondAttribute="leading" constant="8" id="e7s-h6-SBP"/>
                                     <constraint firstAttribute="trailing" secondItem="3a3-w5-hov" secondAttribute="trailing" constant="40" id="fgR-z5-Y1B"/>
@@ -824,10 +853,11 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Hjs-iB-NyF" secondAttribute="trailing" id="0cE-Yb-66C"/>
                             <constraint firstItem="Hjs-iB-NyF" firstAttribute="top" secondItem="H06-S0-KWv" secondAttribute="top" id="2Wk-VX-pHc"/>
-                            <constraint firstItem="tLR-MB-eCq" firstAttribute="leading" secondItem="H06-S0-KWv" secondAttribute="leading" constant="10" id="3ku-Yd-02h"/>
-                            <constraint firstAttribute="trailing" secondItem="tLR-MB-eCq" secondAttribute="trailing" constant="10" id="6Kf-h9-J6R"/>
+                            <constraint firstItem="tLR-MB-eCq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H06-S0-KWv" secondAttribute="leading" constant="10" id="3ku-Yd-02h"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tLR-MB-eCq" secondAttribute="trailing" constant="10" id="6Kf-h9-J6R"/>
                             <constraint firstItem="tLR-MB-eCq" firstAttribute="centerY" secondItem="H06-S0-KWv" secondAttribute="centerY" id="Tck-vD-n65"/>
                             <constraint firstItem="vgh-p3-TpE" firstAttribute="top" secondItem="Hjs-iB-NyF" secondAttribute="bottom" id="WHn-VT-yGh"/>
+                            <constraint firstItem="tLR-MB-eCq" firstAttribute="centerX" secondItem="H06-S0-KWv" secondAttribute="centerX" id="ZZC-vh-cGw"/>
                             <constraint firstItem="Hjs-iB-NyF" firstAttribute="leading" secondItem="H06-S0-KWv" secondAttribute="leading" id="qgt-Pv-hCS"/>
                         </constraints>
                     </view>
@@ -854,22 +884,22 @@
                         <viewControllerLayoutGuide type="bottom" id="HnD-v0-Wia"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="A4B-VY-bYD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pEz-aF-4AB">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SuggestionCell" textLabel="A9T-6U-l3e" style="IBUITableViewCellStyleDefault" id="8iA-nE-LHF">
-                                        <rect key="frame" x="0.0" y="28" width="1000" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8iA-nE-LHF" id="Ucc-GK-qFv">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="A9T-6U-l3e">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -879,14 +909,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ErrorCell" textLabel="Syi-3Z-x67" style="IBUITableViewCellStyleDefault" id="ZAQ-CG-iSU">
-                                        <rect key="frame" x="0.0" y="72" width="1000" height="44"/>
+                                        <rect key="frame" x="0.0" y="72" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZAQ-CG-iSU" id="Vas-3D-beC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Syi-3Z-x67">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

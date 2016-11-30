@@ -29,6 +29,16 @@ class BukoliPointCell: UITableViewCell {
         }
     }
     
+    // MARK: - Class Functions
+    
+    class func sizeForItem(_ scrollView: UIScrollView) -> CGSize {
+        var size = scrollView.frame.size
+        // Max iPhone 6+ width
+        size.width = min(size.width, 414)
+        size.width -= 48
+        return size
+    }
+    
     // MARK: - Actions
     
     @IBAction func selectPoint(_ sender: AnyObject) {
