@@ -9,16 +9,16 @@
 import Foundation
 import ObjectMapper
 
-class Error: Mappable {
+public class Error: Mappable {
     var code: String!
     var error: String!
     
-    init(_ error: NSError) {
+    init(error: NSError) {
         self.code = String(error.code)
         self.error = error.localizedDescription
     }
     
-    required init?(map: Map) {
+    required public init?(_ map: Map) {
         
     }
     

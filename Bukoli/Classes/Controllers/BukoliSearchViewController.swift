@@ -24,8 +24,7 @@ class BukoliSearchViewController: UIViewController, UITableViewDataSource, UITab
     var error: String?
     
     // MARK: - UISearchResultsUpdating
-    
-    func updateSearchResults(for searchController: UISearchController) {
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
         
         let text = searchController.searchBar.text!
         
@@ -36,19 +35,18 @@ class BukoliSearchViewController: UIViewController, UITableViewDataSource, UITab
         
         error = nil
         
-        if (text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).characters.count == 0) {
-            // End
+        if (text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).characters.count == 0){
             self.suggestions = []
             self.tableView.reloadData()
             return
         }
         
-        let parameters: [String: Any] = [
+        let parameters: [String: AnyObject] = [
             "keyword" : text
         ]
         
         request?.cancel()
-        request = WebService.GET(uri: "point/autocomplete", parameters: parameters, success: {
+        request = WebService.GET("point/autocomplete", parameters: parameters, success: {
             (response: [Suggestion]) in
             self.suggestions = response
             self.tableView.reloadData()
@@ -62,28 +60,30 @@ class BukoliSearchViewController: UIViewController, UITableViewDataSource, UITab
     
     // MARK - UITableViewDataSource
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        
         return 2
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (section == 0) {
-            return error != nil ? 1 : 0
-        }
-        return suggestions.count
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+                if (section == 0) {
+                    return error != nil ? 1 : 0
+                }
+                return suggestions.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         if (indexPath.section == 0) {
-            return tableView.dequeueReusableCell(withIdentifier: "ErrorCell", for: indexPath)
+            return tableView.dequeueReusableCellWithIdentifier("ErrorCell", forIndexPath: indexPath)
         }
-        return tableView.dequeueReusableCell(withIdentifier: "SuggestionCell", for: indexPath)
+       return tableView.dequeueReusableCellWithIdentifier("SuggestionCell", forIndexPath: indexPath)
     }
-    
     // MARK: UITableViewDelegate
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if (indexPath.section == 0) {
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (indexPath.section == 0){
             cell.textLabel?.text = error
             return
         }
@@ -91,15 +91,15 @@ class BukoliSearchViewController: UIViewController, UITableViewDataSource, UITab
         cell.textLabel?.text = suggestion.name
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.section == 0) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if (indexPath.section == 0){
             return
-        }
-        
+    }
+    
         let suggestion = suggestions[indexPath.row]
         bukoliMapViewController.placeId = suggestion.id
         bukoliMapViewController.updatePoints()
-        bukoliMapViewController.searchController.isActive = false
+        bukoliMapViewController.searchController.active = false
     }
     
     // MARK: - Lifecycle

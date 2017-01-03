@@ -21,7 +21,7 @@ class BukoliPinView: UIView {
         self.centerView.layer.cornerRadius = 11
         self.centerView.layer.masksToBounds = true
         self.centerView.layer.borderWidth = 1
-        self.centerView.layer.borderColor = Bukoli.sharedInstance.buttonTextColor.cgColor
+        self.centerView.layer.borderColor = Bukoli.sharedInstance.buttonTextColor.CGColor
         
         self.label.textColor = Bukoli.sharedInstance.buttonTextColor
     }

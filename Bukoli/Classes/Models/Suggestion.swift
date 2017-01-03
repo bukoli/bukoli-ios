@@ -13,11 +13,11 @@ class Suggestion: Mappable {
     var id: String!
     var name: String!
     
-    required init?(map: Map) {
+    required init?(_ map: Map) {
         
     }
     
-    public func mapping(map: Map) {
+    func mapping(map: Map) {
         id      <- map["id"]
         name    <- map["name"]
     }

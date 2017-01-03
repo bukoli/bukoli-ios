@@ -37,16 +37,16 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     
     // MARK: - Navigation
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "BukoliDetailDialog") {
             definesPresentationContext = false
-            let bukoliDetailDialog = segue.destination as! BukoliDetailDialog
+            let bukoliDetailDialog = segue.destinationViewController as! BukoliDetailDialog
             bukoliDetailDialog.bukoliMapViewController = self
             bukoliDetailDialog.index = sender as! Int
         }
         if (segue.identifier == "BukoliPhoneDialog") {
             definesPresentationContext = false
-            let bukoliPhoneDialog = segue.destination as! BukoliPhoneDialog
+            let bukoliPhoneDialog = segue.destinationViewController as! BukoliPhoneDialog
             bukoliPhoneDialog.bukoliMapViewController = self
         }
         if (segue.identifier == "BukoliInfo") {
@@ -56,87 +56,89 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     
     func pointSelected() {
         if (Bukoli.sharedInstance.shouldAskPhoneNumber) {
-            self.performSegue(withIdentifier: "BukoliPhoneDialog", sender: nil)
+            self.performSegueWithIdentifier("BukoliPhoneDialog", sender: nil)
         }
         else {
-            self.dismiss(animated: true, completion: nil)
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
     
     // MARK: - Actions
-
-    @IBAction func close(_ sender: AnyObject) {
+    
+    @IBAction func close(sender: AnyObject) {
         // Close
-        self.navigationController?.dismiss(animated: true, completion: nil)
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func centerButtonTapped(_ sender: AnyObject) {
+    @IBAction func centerButtonTapped(sender: AnyObject) {
         placeId = nil
         currentLocation = lastKnownLocation
         self.updatePoints(true)
     }
     
-    @IBAction func switchButtonTapped(_ sender: AnyObject) {
+    @IBAction func switchButtonTapped(sender: AnyObject) {
         let switchButton = sender as! UIButton
-        if (mapView.isHidden) {
+        if (mapView.hidden) {
             // Switch to Map
-            mapView.isHidden = false
-            centerImageView.isHidden = false
-            centerView.isHidden = false
-            centerButton.isHidden = false
-            tableView.isHidden = true
+            mapView.hidden = false
+            centerImageView.hidden = false
+            centerView.hidden = false
+            centerButton.hidden = false
+            tableView.hidden = true
             
-            switchButton.isSelected = false
-            UIView.animate(withDuration: 0.25, animations: {
+            switchButton.selected = false
+            UIView.animateWithDuration(0.25, animations: {
                 self.view.layoutIfNeeded()
             })
         }
         else {
             // Switch to Table
-            mapView.isHidden = true
-            centerImageView.isHidden = true
-            centerView.isHidden = true
-            centerButton.isHidden = true
-            tableView.isHidden = false
+            mapView.hidden = true
+            centerImageView.hidden = true
+            centerView.hidden = true
+            centerButton.hidden = true
+            tableView.hidden = false
             
-            switchButton.isSelected = true
-            UIView.animate(withDuration: 0.25, animations: {
+            switchButton.selected = true
+            UIView.animateWithDuration(0.25, animations: {
                 self.view.layoutIfNeeded()
             })
+            
+            
         }
     }
     
     
     // MARK: - UITableViewDataSource
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bukoliPoints.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BukoliPointCell") as! BukoliPointCell
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("BukoliPointCell") as! BukoliPointCell
         cell.mapViewController = self
         return cell
     }
     
     // MARK: UITableViewDelegate
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         let bukoliCell = cell as! BukoliPointCell
         let bukoliPoint = bukoliPoints[indexPath.row]
         
         bukoliCell.bukoliPoint = bukoliPoint
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     
@@ -148,10 +150,10 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         locationManager.distanceFilter = 100.0;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         
-        locationManager(locationManager, didChangeAuthorization: CLLocationManager.authorizationStatus())
+        locationManager(locationManager, didChangeAuthorizationStatus: CLLocationManager.authorizationStatus())
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locationManager.stopUpdatingLocation()
         locationManager = nil
         
@@ -163,50 +165,48 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         self.updatePoints(true)
     }
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .notDetermined:
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        
+        switch status{
+        case .NotDetermined:
             self.locationManager.requestWhenInUseAuthorization()
             break
-        case .restricted:
+        case.Restricted:
             break
-        case .denied:
+        case.Denied:
             self.showNotAuthorizedDialog()
             break
-        case .authorizedWhenInUse, .authorizedAlways:
+        case.AuthorizedWhenInUse, .AuthorizedAlways:
             self.locationManager.startUpdatingLocation()
             break
         }
     }
     
     func showNotAuthorizedDialog() {
-        let alertController = UIAlertController(title: "Hata", message: "Yakınızdaki Bukoli noktalarını bulmamız için konum izni vermelisiniz. İzin vermek için ayarlara gidebilir veya izin vermek istemiyorsanız adresinizi aratabilirsiniz.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Hata", message: "Yakınızdaki Bukoli noktalarını bulmamız için konum izni vermelisiniz. İzin vermek için ayarlara gidebilir veya izin vermek istemiyorsanız adresinizi aratabilirsiniz.", preferredStyle: UIAlertControllerStyle.Alert)
         
-        let OKAction = UIAlertAction(title: "Kapat", style: .default) { (action:UIAlertAction!) in
-            
-        }
+        let OKAction = UIAlertAction(title: "Kapat", style: UIAlertActionStyle.Default) { (action:UIAlertAction!) in }
         alertController.addAction(OKAction)
         
         
-        let cancelAction = UIAlertAction(title: "Ayarlar", style: .cancel) { (action:UIAlertAction!) in
-            alertController.dismiss(animated: true, completion: nil)
-            UIApplication.shared.openURL(NSURL(string: UIApplicationOpenSettingsURLString)! as URL)
+        let cancelAction = UIAlertAction(title: "Ayarlar", style: UIAlertActionStyle.Cancel) { (action:UIAlertAction!) in
+            alertController.dismissViewControllerAnimated(true, completion: nil)
+            UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
         }
         alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion:nil)
-        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     // MARK: - Map
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if (annotation is MKUserLocation) {
             return nil
         }
         
         if annotation is BukoliPoint {
             let annotationIdentifier = "Bukoli Annotation"
-            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) as? BukoliAnnotationView
+            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationIdentifier) as? BukoliAnnotationView
             if (annotationView == nil) {
                 annotationView = BukoliAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
                 
@@ -219,41 +219,43 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
                 pinView.layoutIfNeeded()
                 
             }
-
+            
             // Find Index
-            for (index, bukoliPoint) in bukoliPoints.enumerated() where bukoliPoint.id == (annotation as! BukoliPoint).id  {
+            for (index, bukoliPoint) in bukoliPoints.enumerate() where bukoliPoint.id == (annotation as! BukoliPoint).id  {
                 annotationView?.pinView.label.text = "\(index+1)"
                 if bukoliPoint.isLocker! {
                     annotationView!.pinView.imageView.tintColor = UIColor(hex: 0xFF31AADE)
                     annotationView!.pinView.centerView.backgroundColor = UIColor(hex: 0xFF31AADE).lighter()
-                    annotationView!.pinView.centerView.layer.borderColor = UIColor.white.cgColor
+                    annotationView!.pinView.centerView.layer.borderColor = UIColor.whiteColor().CGColor
                 }
                 else {
                     annotationView!.pinView.imageView.tintColor = Bukoli.sharedInstance.buttonBackgroundColor
                     annotationView!.pinView.centerView.backgroundColor = Bukoli.sharedInstance.buttonBackgroundColor.lighter()
-                    annotationView!.pinView.centerView.layer.borderColor = Bukoli.sharedInstance.buttonTextColor.cgColor
+                    annotationView!.pinView.centerView.layer.borderColor = Bukoli.sharedInstance.buttonTextColor.CGColor
                 }
             }
-
+            
             return annotationView
         }
         
         return nil
+
     }
     
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         mapView.deselectAnnotation(view.annotation, animated: false)
-        for (index, bukoliPoint) in bukoliPoints.enumerated() where bukoliPoint.id == (view.annotation as! BukoliPoint).id  {
-            self.performSegue(withIdentifier: "BukoliDetailDialog", sender: index)
+        for (index, bukoliPoint) in bukoliPoints.enumerate() where bukoliPoint.id == (view.annotation as! BukoliPoint).id  {
+            self.performSegueWithIdentifier("BukoliDetailDialog", sender: index)
         }
     }
     
     private var mapChangedFromUserInteraction = true
     
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        
         let centerLocation = CLLocation(latitude: mapView.region.center.latitude, longitude: mapView.region.center.longitude)
         if (mapChangedFromUserInteraction) {
-            if (currentLocation != nil && currentLocation!.distance(from: centerLocation) > 100) {
+            if (currentLocation != nil && currentLocation!.distanceFromLocation(centerLocation) > 100) {
                 currentLocation = centerLocation
                 placeId = nil
                 self.updatePoints(false)
@@ -263,7 +265,7 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         mapChangedFromUserInteraction = true
     }
     
-    func updateMarkers(_ animated: Bool = true) {
+    func updateMarkers(animated: Bool = true) {
         mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotations(self.bukoliPoints)
         if (animated) {
@@ -281,7 +283,7 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         var maxDistance:Double = 0
         for annotation: MKAnnotation in mapView.annotations {
             let annotationLocation = CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
-            maxDistance = max(maxDistance, currentLocation.distance(from: annotationLocation))
+            maxDistance = max(maxDistance, currentLocation.distanceFromLocation(annotationLocation))
         }
         var fittedRegion = MKCoordinateRegionMakeWithDistance(currentLocation!.coordinate, maxDistance * 2, maxDistance * 2)
         fittedRegion = mapView.regionThatFits(fittedRegion)
@@ -290,7 +292,7 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         mapView.setRegion(fittedRegion, animated: true)
     }
     
-    public func moveMap(_ point:BukoliPoint) {
+    func moveMap(point:BukoliPoint) {
         mapChangedFromUserInteraction = false
         var region = mapView.region
         region.center = point.coordinate
@@ -300,8 +302,8 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     
     // MARK: - Service
     
-    func updatePoints(_ animated: Bool = true) {
-        var parameters: [String: Any] = ["geocode": 1]
+    func updatePoints(animated: Bool = true) {
+        var parameters: [String: AnyObject] = ["geocode": 1]
         
         if (placeId != nil) {
             parameters["place_id"] = placeId
@@ -313,7 +315,7 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         
         request?.cancel()
         activityIndicator.startAnimating()
-        request = WebService.GET(uri: "point", parameters: parameters, success: {
+        request = WebService.GET("point", parameters: parameters, success: {
             (response: BukoliResponse<BukoliPoint>) in
             self.bukoliPoints = response.data
             
@@ -328,24 +330,23 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         }) {
             (error: Error) in
             self.activityIndicator.stopAnimating()
-            let alert = UIAlertController(title: "Hata", message: error.error, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Tamam", style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            
+            let alert = UIAlertController(title: "Hata", message: error.error, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
     }
     
- 
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.leftBarButtonItem?.tintColor = Bukoli.sharedInstance.buttonTextColor
         self.navigationController?.navigationBar.barTintColor = Bukoli.sharedInstance.buttonBackgroundColor
-        self.navigationController?.navigationBar.isTranslucent = false
-
+        self.navigationController?.navigationBar.translucent = false
+        
         // Do any additional setup after loading the view.
-        let bukoliSearchViewController = self.storyboard?.instantiateViewController(withIdentifier: "BukoliSearchViewController") as! BukoliSearchViewController
+        let bukoliSearchViewController = self.storyboard?.instantiateViewControllerWithIdentifier("BukoliSearchViewController") as! BukoliSearchViewController
         bukoliSearchViewController.bukoliMapViewController = self
         searchController = UISearchController(searchResultsController: bukoliSearchViewController)
         searchController.delegate = self
@@ -357,14 +358,14 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         searchController.searchBar.placeholder = "İlçe, mahalle, sokak ara"
         searchController.searchBar.tintColor = Bukoli.sharedInstance.buttonTextColor
         searchController.searchBar.barTintColor = Bukoli.sharedInstance.buttonBackgroundColor
-
+        
         self.navigationItem.titleView = searchController.searchBar
         
         // MapView
         mapView.delegate = self
-        mapView.mapType = .standard
+        mapView.mapType = .Standard
         mapView.showsUserLocation = true
-        mapView.isRotateEnabled = false
+        mapView.rotateEnabled = false
         
         lastKnownLocation = CLLocation(latitude: 41.04113936, longitude: 28.99533076)
         currentLocation = lastKnownLocation
@@ -372,13 +373,13 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         mapView.setRegion(viewRegion, animated: false)
         
         // Center
-        self.centerView.layer.shadowColor = UIColor.black.cgColor
+        self.centerView.layer.shadowColor = UIColor.blackColor().CGColor
         self.centerView.layer.shadowOpacity = 0.5
         self.centerView.layer.shadowRadius = 2
         self.centerView.layer.shadowOffset = CGSize(width: 1, height: 1)
         
         // Fab
-        self.fabView.layer.shadowColor = UIColor.black.cgColor
+        self.fabView.layer.shadowColor = UIColor.blackColor().CGColor
         self.fabView.layer.shadowOpacity = 0.5
         self.fabView.layer.shadowRadius = 2
         self.fabView.layer.shadowOffset = CGSize(width: 1, height: 1)
@@ -386,44 +387,44 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         // Activity Indicator
         self.activityIndicator.layer.cornerRadius = 4
         self.activityIndicator.color = Bukoli.sharedInstance.buttonBackgroundColor
-        self.activityIndicator.backgroundColor = Bukoli.sharedInstance.buttonTextColor.withAlphaComponent(0.90)
-        
-        WebService.Authorize(success: {
+        self.activityIndicator.backgroundColor = Bukoli.sharedInstance.buttonTextColor.colorWithAlphaComponent(0.90)
+        WebService.Authorize({
             // Location
             self.updatePoints(false)
             self.startLocationMonitoring()
             
-        }, failure: { (error: Error) in
-            
-            self.activityIndicator.stopAnimating()
-            let alert = UIAlertController(title: "Hata", message: error.error, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Tamam", style: .cancel, handler: { (UIAlertAction) in
-                self.dismiss(animated: true, completion: nil)
-            }))
-            self.present(alert, animated: true, completion: nil)
+            }, failure: { (error: Error) in
+                
+                self.activityIndicator.stopAnimating()
+                let alert = UIAlertController(title: "Hata", message: error.error, preferredStyle: .Alert)
+                alert.addAction(UIAlertAction(title: "Tamam", style: .Cancel, handler: { (UIAlertAction) in
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }))
+                self.presentViewController(alert, animated: true, completion: nil)
         })
-
+        
         
         // Information
-        WebService.GET(uri: "information", parameters: nil, success: {
+        WebService.GET("information", parameters: nil, success: {
             (response: Information) in
             self.informationLabel.text = response.information
         }) {
             (error: Error) in
             // Ignore errors
         }
-
+        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         definesPresentationContext = true
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         Bukoli.complete()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -437,5 +438,5 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         fabView.layer.cornerRadius = fabView.frame.width/2
         fabButton.layer.cornerRadius = fabButton.frame.width/2
     }
-
+    
 }

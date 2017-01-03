@@ -12,11 +12,11 @@ import ObjectMapper
 class Information: Mappable {
     var information: String!
     
-    required init?(map: Map) {
+    required init?(_ map: Map) {
         
     }
     
-    public func mapping(map: Map) {
+    func mapping(map: Map) {
         information    <- map["information"]
     }
     

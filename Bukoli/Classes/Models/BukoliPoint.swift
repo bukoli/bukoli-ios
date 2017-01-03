@@ -27,7 +27,7 @@ public class BukoliPoint: NSObject, Mappable, MKAnnotation {
     public var smallImageUrl : String!
     public var workingHours : WorkingHours?
     
-    required public init?(map: Map) {
+    required public init?(_ map: Map) {
         
     }
     
@@ -58,5 +58,4 @@ public class BukoliPoint: NSObject, Mappable, MKAnnotation {
     public var coordinate: CLLocationCoordinate2D {
         return CLLocationCoordinate2DMake(self.location.latitude!, self.location.longitude!)
     }
-    
 }

@@ -11,13 +11,13 @@ You can sign up for a Bukoli account at http://www.bukoli.com.
 
 - iOS 8.0+
 - Xcode 8.1+
-- Swift 3.0+
+- Swift 2.3
 
 ## Dependencies
 
-- [Alamofire 4.2+](https://github.com/Alamofire/Alamofire)
-- [AlamofireImage 3.2+](https://github.com/Alamofire/AlamofireImage)
-- [ObjectMapper 2.0+](https://github.com/Hearst-DD/ObjectMapper)
+- [Alamofire 3.0+](https://github.com/Alamofire/Alamofire)
+- [AlamofireImage 2.0+](https://github.com/Alamofire/AlamofireImage)
+- [ObjectMapper 1.0+](https://github.com/Hearst-DD/ObjectMapper)
 
 ## Example
 
@@ -40,7 +40,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'Bukoli', '~> 1.2'
+    pod 'Bukoli', '~> 0.2'
 end
 ```
 
@@ -89,15 +89,13 @@ Insert the following XML snippet into the body of your file just before the fina
 AppDelegate.swift
 import Bukoli
 
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-	// Override point for customization after application launch.
-	...
-	Bukoli.initialize("your api key")
-	..
-	return true
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+    // Override point for customization after application launch.
+    ...
+    Bukoli.initialize("your api key")
+    ...
+    return true
 }
-
-```
 
 ### Customization
 
@@ -114,29 +112,28 @@ Bukoli.sharedInstance.shouldAskPhoneNumber = true // If you want to ask user pho
 ### Bukoli Select Point
 
 SetUser function first parameter is user unique id on your system
+
 Select function first parameter is presenter viewcontroller.
 
 ```swift
 import Bukoli
 
-Bukoli.setUser(userCode, phone, email) 
-Bukoli.select(self, { (result: BukoliResult, point: BukoliPoint?, phoneNumber: String?) in
+
+Bukoli.setUser(userCode, phone: "phoneNumber", email: "email")
+Bukoli.select(self, completion: { (result: BukoliResult, point: BukoliPoint?, phoneNumber: String?) in
     switch(result) {
     case .success:
         // Point selected
-        // If you asked for phone number, phone number is taken. 
+        // If you asked for phone number, phone number is taken.
         // Phone number format is: 1231234567
-        self.handleSuccess(point, phoneNumber)
-        break
+        self.handleSuccess(point, phoneNumber: phoneNumber)
     case .phoneNumberMissing:
         // Point selected
         // User didn't give phone number.
-        self.handlePhoneNumberMissing(point, phoneNumber)
-        break
+        self.handlePhoneNumberMissing(point, phoneNumber: phoneNumber)
     case .pointNotSelected:
         // User closed without selecting a point
-        self.handlePointNotSelected(point, phoneNumber)
-        break
+        self.handlePointNotSelected(point, phoneNumber: phoneNumber)
     }
 })
 ```
@@ -158,7 +155,7 @@ First parameter is point code
 ```swift
 import Bukoli
 
-Bukoli.pointStatus(pointCode, { (result, point) in
+Bukoli.pointStatus(pointCode, completion: { (result, point) in
     switch(result) {
     case .enabled:
     	// Point is enabled

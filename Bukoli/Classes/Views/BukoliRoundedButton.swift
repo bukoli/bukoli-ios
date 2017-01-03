@@ -16,8 +16,8 @@ class BukoliRoundedButton: UIButton {
         self.layer.masksToBounds = true
     }
     
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
+    override func drawRect(rect: CGRect) {
+        super.drawRect(rect)
         layer.cornerRadius = self.frame.size.width/2
     }
     

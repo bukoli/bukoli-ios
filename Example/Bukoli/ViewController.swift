@@ -17,37 +17,43 @@ class TableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 0 {
             Bukoli.sharedInstance.brandName = "Marka"
             Bukoli.sharedInstance.brandName2 = "Marka'dan"
-            Bukoli.sharedInstance.buttonTextColor = UIColor.white
+            Bukoli.sharedInstance.buttonTextColor = UIColor.whiteColor()
             Bukoli.sharedInstance.buttonBackgroundColor = UIColor(hex: 0xF4AD17)
             Bukoli.sharedInstance.shouldAskPhoneNumber = false
         } else if indexPath.section == 1 {
             Bukoli.sharedInstance.brandName = "Example 1"
             Bukoli.sharedInstance.brandName2 = "Example 1'den"
-            Bukoli.sharedInstance.buttonTextColor = UIColor.white
+            Bukoli.sharedInstance.buttonTextColor = UIColor.whiteColor()
             Bukoli.sharedInstance.buttonBackgroundColor = UIColor(hex: 0xAF005F)
             Bukoli.sharedInstance.shouldAskPhoneNumber = true
         } else if indexPath.section == 2 {
             Bukoli.sharedInstance.brandName = "Example 2"
             Bukoli.sharedInstance.brandName2 = "Example 2'den"
-            Bukoli.sharedInstance.buttonTextColor = UIColor.white
+            Bukoli.sharedInstance.buttonTextColor = UIColor.whiteColor()
             Bukoli.sharedInstance.buttonBackgroundColor = UIColor(hex: 0xF68B1E)
             Bukoli.sharedInstance.shouldAskPhoneNumber = false
         }
         
         if (indexPath.row == 0){
-            Bukoli.setUser("1", "5551234567", "sdk@bukoli.com")
-            Bukoli.select(self, { (result: BukoliResult, point: BukoliPoint?, phoneNumber: String?) in
+            Bukoli.setUser("1", phone: "5551234567", email: "sdk@bukoli.com")
+            Bukoli.select(self, completion: { (result: BukoliResult, point: BukoliPoint?, phoneNumber: String?) in
                 switch(result) {
                 case .success:
-                    self.handleSuccess(point, phoneNumber)
+                    // Point selected
+                    // If you asked for phone number, phone number is taken.
+                    // Phone number format is: 1231234567
+                    self.handleSuccess(point, phoneNumber: phoneNumber)
                 case .phoneNumberMissing:
-                    self.handlePhoneNumberMissing(point, phoneNumber)
+                    // Point selected
+                    // User didn't give phone number.
+                    self.handlePhoneNumberMissing(point, phoneNumber: phoneNumber)
                 case .pointNotSelected:
-                    self.handlePointNotSelected(point, phoneNumber)
+                    // User closed without selecting a point
+                    self.handlePointNotSelected(point, phoneNumber: phoneNumber)
                 }
             })
         }
@@ -55,21 +61,21 @@ class TableViewController: UITableViewController {
             Bukoli.info(self)
         }
         else if (indexPath.row == 2){
-            let alert = UIAlertController(title: "Check Point Status", message: "Plase type point code", preferredStyle: .alert)
-            alert.addTextField(configurationHandler: { (textField) in
+            let alert = UIAlertController(title: "Check Point Status", message: "Plase type point code", preferredStyle: .Alert)
+            alert.addTextFieldWithConfigurationHandler({ (textField) in
                 textField.placeholder = "TDR-1234"
             })
-            alert.addAction(UIAlertAction(title: "Check", style: .cancel, handler: { (action) in
+            alert.addAction(UIAlertAction(title: "Check", style: .Cancel, handler: { (action) in
                 let pointCode = alert.textFields!.first!.text!
                 if (pointCode.characters.isEmpty) {
-                    let errorAlert = UIAlertController(title: "Error", message: "Plase type point code", preferredStyle: .alert)
-                    errorAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action) in
-                        self.present(alert, animated: true, completion: nil)
+                    let errorAlert = UIAlertController(title: "Error", message: "Plase type point code", preferredStyle: .Alert)
+                    errorAlert.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: { (action) in
+                        self.presentViewController(alert, animated: true, completion: nil)
                     }))
-                    self.present(errorAlert, animated: true, completion: nil)
+                    self.presentViewController(errorAlert, animated: true, completion: nil)
                 }
                 
-                Bukoli.pointStatus(pointCode, { (result, point) in
+                Bukoli.pointStatus(pointCode, completion: { (result, point) in
                     var title = ""
                     var message = ""
                     switch(result) {
@@ -84,19 +90,20 @@ class TableViewController: UITableViewController {
                         message = "Point not existed or removed."
                     }
                     
-                    let responseAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                    responseAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-                    self.present(responseAlert, animated: true, completion: nil)
+                    let responseAlert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+                    responseAlert.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
+                    self.presentViewController(responseAlert, animated: true, completion: nil)
                     
                 })
             }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
             
-            self.present(alert, animated: true, completion: nil)
+            self.presentViewController(alert, animated: true, completion: nil)
         }
+
     }
     
-    func handleSuccess(_ point: BukoliPoint?, _ phoneNumber: String?) {
+    func handleSuccess(point: BukoliPoint?, phoneNumber: String?) {
         let pointCode = point!.code
         let pointName = point!.name
         
@@ -105,27 +112,27 @@ class TableViewController: UITableViewController {
             message += "\nPhone Number: " + phoneNumber!
         }
         
-        let alert = UIAlertController(title: "Success", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: "Success", message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
         
     }
     
-    func handlePhoneNumberMissing(_ point: BukoliPoint?, _ phoneNumber: String?) {
+    func handlePhoneNumberMissing(point: BukoliPoint?, phoneNumber: String?) {
         let pointCode = point!.code
         let pointName = point!.name
         
         var message = "Point selected but phone number is missing."
         message += String(format:"\nPoint Code: %@\nPoint Name: %@", pointCode!, pointName!)
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
-    func handlePointNotSelected(_ point: BukoliPoint?, _ phoneNumber: String?) {
-        let alert = UIAlertController(title: "Error", message: "Point not selected.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+    func handlePointNotSelected(point: BukoliPoint?, phoneNumber: String?) {
+        let alert = UIAlertController(title: "Error", message: "Point not selected.", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }
 

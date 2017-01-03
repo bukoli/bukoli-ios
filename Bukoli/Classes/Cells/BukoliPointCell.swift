@@ -21,7 +21,7 @@ class BukoliPointCell: UITableViewCell {
     
     var bukoliPoint: BukoliPoint! {
         didSet {
-            pointImageView.af_setImage(withURL: URL(string: bukoliPoint.largeImageUrl)!)
+            pointImageView.af_setImageWithURL(NSURL(string: bukoliPoint.largeImageUrl)!)
             nameLabel.text = bukoliPoint.name
             addressLabel.text = bukoliPoint.address
             workingHoursLabel.text = bukoliPoint.workingHours?.readable()
@@ -30,8 +30,7 @@ class BukoliPointCell: UITableViewCell {
     }
     
     // MARK: - Class Functions
-    
-    class func sizeForItem(_ scrollView: UIScrollView) -> CGSize {
+    class func sizeForItem(scrollView: UIScrollView) -> CGSize {
         var size = scrollView.frame.size
         // Max iPhone 6+ width
         size.width = min(size.width, 414)
@@ -41,7 +40,7 @@ class BukoliPointCell: UITableViewCell {
     
     // MARK: - Actions
     
-    @IBAction func selectPoint(_ sender: AnyObject) {
+    @IBAction func selectPoint(sender: AnyObject) {
         Bukoli.sharedInstance.bukoliPoint = bukoliPoint
         mapViewController.pointSelected()
     }
@@ -50,7 +49,7 @@ class BukoliPointCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.layoutMargins = UIEdgeInsets.zero;
+        self.layoutMargins = UIEdgeInsetsZero;
     }
     
     override func prepareForReuse() {

@@ -13,27 +13,26 @@ import ObjectMapper
 private var baseUrl = "http://bukoli.mobillium.com/integration/"
 
 class WebService {
-    
+//    
     static var integrationToken: String?
-    
-    private static var _manager: SessionManager!
-    static var manager: SessionManager {
+
+    private static var _manager: Manager!
+    static var manager: Manager {
         get {
             if _manager == nil {
-                let configuration = URLSessionConfiguration.default
+                let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
                 configuration.timeoutIntervalForRequest = 10
                 
-                _manager = SessionManager(configuration: configuration, delegate: SessionDelegate(), serverTrustPolicyManager: nil)
+                _manager = Alamofire.Manager(configuration: configuration)
             }
             return _manager
         }
     }
-    
-    @discardableResult
-    class func Authorize(success: @escaping (() -> Void), failure: @escaping((_ error: Error) -> Void)) -> Request {
-        let headers: HTTPHeaders = [
+//
+    class func Authorize(success:(() -> Void), failure: ((Error) -> Void)) -> Request {
+        let headers: [String: String] = [
             "X-iOS-Key": Bukoli.sharedInstance.password,
-            "X-iOS-Package": Bundle.main.bundleIdentifier!,
+            "X-iOS-Package": NSBundle.mainBundle().bundleIdentifier!,
             ]
         
         let url = baseUrl + "authorize"
@@ -43,120 +42,123 @@ class WebService {
         parameters["email"] = Bukoli.sharedInstance.email
         parameters["phone"] = Bukoli.sharedInstance.phone
         
-        parameters["app_version"] = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
-        parameters["app_build"] = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
-        parameters["sdk_version"] = Bundle(for: self).object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
-        parameters["os_version"] = UIDevice.current.systemVersion
-        parameters["brand"] = "Apple"
-        parameters["model"] = UIDevice.current.modelName
+        parameters["app_version"] = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
+        parameters["app_build"] = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleVersion") as? String
+        parameters["sdk_version"] = NSBundle(forClass: self).objectForInfoDictionaryKey ("CFBundleShortVersionString") as? String
         
-        return manager.request(url, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: headers)
+        parameters["os_version"] = UIDevice.currentDevice().systemVersion
+        parameters["brand"] = "Apple"
+        parameters["model"] = UIDevice.currentDevice().modelName
+        
+        
+        
+        return manager.request(.POST, url, parameters: parameters, encoding: .URL, headers: headers)
             .validate()
             .responseJSON {
                 response in
                 if (response.result.isSuccess) {
                     // Success
-                    let data = response.result.value as! [String: Any]
-                    if let object = Mapper<Token>().map(JSON: data) {
+                    print(response.result.value)
+                    let data = response.result.value as! [String: AnyObject]
+                    if let object = Mapper<Token>().map(data) {
                         WebService.integrationToken = object.token
                         success()
                         return
                     }
                     
                 } else if response.result.isFailure {
-                    let error = response.result.error as! NSError
-                    handleError(error, response.data!, failure)
+//                    let error = response.result.error as! NSError
+//                    handleError(error, response.data!, failure)
                 }
         }
     }
 
     
-    @discardableResult
-    class func GET<T: Mappable>(uri: String, parameters: [String: Any]?, success: @escaping ((_ response: T) -> Void), failure: @escaping((_ error: Error) -> Void)) -> Request {
-        let headers: HTTPHeaders = [
+    class func GET<T: Mappable>(uri: String, parameters: [String: AnyObject]?, success: ((T) -> Void), failure: ((Error) -> Void)) -> Request {
+        let headers: [String: String] = [
             "X-iOS-Key": Bukoli.sharedInstance.password,
-            "X-iOS-Package": Bundle.main.bundleIdentifier!,
+            "X-iOS-Package": NSBundle.mainBundle().bundleIdentifier!,
             "X-Integration-Token": WebService.integrationToken ?? "",
             ]
         
         let url = baseUrl + uri
         
-        return manager.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers)
+        
+        return manager.request(.GET, url, parameters: parameters, encoding: .URLEncodedInURL, headers: headers)
             .validate()
             .responseJSON {
                 response in
                 if (response.result.isSuccess) {
                     // Success
-                    let data = response.result.value as! [String: Any]
-                    if let object = Mapper<T>().map(JSON: data) {
+                    print(response.result.value)
+                    let data = response.result.value as! [String: AnyObject]
+                    if let object = Mapper<T>().map(data) {
                         success(object as T)
                         return
                     }
                 } else if response.result.isFailure {
-                    let error = response.result.error as! NSError
-                    handleError(error, response.data!, failure)
+                    let error = response.result.error!
+                    handleError(error, data: response.data!, failure: failure)
                 }
         }
     }
     
-    @discardableResult
-    class func POST(uri: String, parameters: [String: Any]?) -> Request {
-        let headers: HTTPHeaders = [
+    class func POST(uri: String, parameters: [String: AnyObject]?) -> Request {
+        let headers: [String: String] = [
             "X-iOS-Key": Bukoli.sharedInstance.password,
-            "X-iOS-Package": Bundle.main.bundleIdentifier!,
+            "X-iOS-Package": NSBundle.mainBundle().bundleIdentifier!,
             "X-Integration-Token": WebService.integrationToken ?? "",
             ]
         
         let url = baseUrl + uri
         
-        return manager.request(url, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: headers)
+        return manager.request(.POST, url, parameters: parameters, encoding: .URLEncodedInURL, headers: headers)
     }
-    
-    @discardableResult
-    class func GET<T: Mappable>(uri: String, parameters: [String: Any]?, success: @escaping ((_ response: [T]) -> Void), failure: @escaping((_ error: Error) -> Void)) -> Request {
-        let headers: HTTPHeaders = [
+
+    class func GET<T: Mappable>(uri: String, parameters: [String: AnyObject]?, success: (([T]) -> Void), failure:((Error) -> Void)) -> Request {
+        let headers: [String: String] = [
             "X-iOS-Key": Bukoli.sharedInstance.password,
-            "X-iOS-Package": Bundle.main.bundleIdentifier!,
+            "X-iOS-Package": NSBundle.mainBundle().bundleIdentifier!,
             "X-Integration-Token": WebService.integrationToken ?? "",
             ]
         
         let url = baseUrl + uri
         
-        return manager.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers)
+        return manager.request(.GET, url, parameters: parameters, encoding: .URL, headers: headers)
             .validate()
             .responseJSON {
                 response in
                 
                 if (response.result.isSuccess) {
                     // Success
-                    let data = response.result.value as! [[String: Any]]
-                    if let object = Mapper<T>().mapArray(JSONArray: data) {
+                    let data = response.result.value as! [[String: AnyObject]]
+                    if let object = Mapper<T>().mapArray(data) {
                         success(object as [T])
                         return
                     }
                     
                     
                 } else if response.result.isFailure {
-                    let error = response.result.error as! NSError
-                    handleError(error, response.data!, failure)
+                    let error = response.result.error!
+                    handleError(error, data: response.data!, failure: failure)
                 }
         }
     }
     
-    class func handleError(_ error: NSError, _ data: Data, _ failure: @escaping((_ error: Error) -> Void)) {
+    class func handleError(error: NSError, data: NSData, failure: ((Error) -> Void)) {
         // Request cancelled
         if error.code == -999 {
             return
         }
         
         // Failure
-        let jsonString = String(data: data, encoding: String.Encoding.utf8)!
-        if let object = Mapper<Error>().map(JSONString: jsonString) {
+        let jsonString = String(data: data, encoding: NSUTF8StringEncoding)!
+        if let object = Mapper<Error>().map(jsonString) {
             failure(object)
             return
         }
         
         // Connection Error
-        failure(Error(error))
+        failure(Error(error: error))
     }
 }

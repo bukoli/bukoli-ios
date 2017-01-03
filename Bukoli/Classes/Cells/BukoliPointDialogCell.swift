@@ -24,7 +24,8 @@ class BukoliPointDialogCell: UICollectionViewCell {
     
     var bukoliPoint: BukoliPoint! {
         didSet {
-            pointImageView.af_setImage(withURL: URL(string: bukoliPoint.largeImageUrl)!)
+            pointImageView.af_setImageWithURL(NSURL(string: bukoliPoint.largeImageUrl)!)
+           // pointImageView.af_setImage(withURL: URL(string: bukoliPoint.largeImageUrl)!)
             indexLabel.text = "\(index+1)"
             nameLabel.text = bukoliPoint.name
             addressLabel.text = bukoliPoint.address
@@ -35,20 +36,20 @@ class BukoliPointDialogCell: UICollectionViewCell {
             indexView.layer.masksToBounds = true
             
             if bukoliPoint.isLocker! {
-                indexLabel.textColor = UIColor.white
+                indexLabel.textColor = UIColor.whiteColor()
                 indexView.backgroundColor = UIColor(hex: 0xFF31AADE).lighter()
                 
-                saveButton.setTitleColor(UIColor.white, for: .normal)
+                saveButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
                 saveButton.backgroundColor = UIColor(hex: 0xFF31AADE)
-                saveButton.layer.borderColor = UIColor(hex: 0xFF31AADE).darker().cgColor
+                saveButton.layer.borderColor = UIColor(hex: 0xFF31AADE).darker().CGColor
             }
             else {
                 indexLabel.textColor = Bukoli.sharedInstance.buttonTextColor
                 indexView.backgroundColor = Bukoli.sharedInstance.buttonBackgroundColor.lighter()
                 
-                saveButton.setTitleColor(Bukoli.sharedInstance.buttonTextColor, for: .normal)
+                saveButton.setTitleColor(Bukoli.sharedInstance.buttonTextColor, forState: .Normal)
                 saveButton.backgroundColor = Bukoli.sharedInstance.buttonBackgroundColor
-                saveButton.layer.borderColor = Bukoli.sharedInstance.buttonBackgroundColor.darker().cgColor
+                saveButton.layer.borderColor = Bukoli.sharedInstance.buttonBackgroundColor.darker().CGColor
             }
         }
     }
@@ -56,25 +57,25 @@ class BukoliPointDialogCell: UICollectionViewCell {
     
     // MARK: - Actions
     
-    @IBAction func save(_ sender: AnyObject) {
+    @IBAction func save(sender: AnyObject) {
         Bukoli.sharedInstance.bukoliPoint = bukoliPoint
-        bukoliDetailDialog.dismiss(animated: true) {
+        bukoliDetailDialog.dismissViewControllerAnimated(true) {
             self.bukoliDetailDialog.bukoliMapViewController.definesPresentationContext = true
             self.bukoliDetailDialog.bukoliMapViewController.pointSelected()
         }
     }
     
-    @IBAction func close(_ sender: AnyObject) {
+    @IBAction func close(sender: AnyObject) {
         Bukoli.sharedInstance.bukoliPoint = nil
         bukoliDetailDialog.bukoliMapViewController.definesPresentationContext = true
-        bukoliDetailDialog.dismiss(animated: true, completion: nil)
+        bukoliDetailDialog.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: - Lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.layoutMargins = UIEdgeInsets.zero;
+        self.layoutMargins = UIEdgeInsetsZero;
         
         self.closeView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.close(_:))))
     }

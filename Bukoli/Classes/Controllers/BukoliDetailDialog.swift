@@ -26,7 +26,7 @@ class BukoliDetailDialog: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func updateMap() {
-        if let cell = collectionView.visibleCells.first as? BukoliPointDialogCell {
+        if let cell = collectionView.visibleCells().first as? BukoliPointDialogCell {
             bukoliMapViewController.moveMap(cell.bukoliPoint)
         }
         
@@ -34,68 +34,64 @@ class BukoliDetailDialog: UIViewController, UICollectionViewDataSource, UICollec
     
     // MARK: - UICollectionViewDataSource
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return bukoliPoints.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BukoliPointDialogCell", for: indexPath) as! BukoliPointDialogCell
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("BukoliPointDialogCell", forIndexPath: indexPath) as! BukoliPointDialogCell
         cell.bukoliDetailDialog = self
         return cell
     }
     
+    
     // MARK: UICollectionViewDelegate
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         let cell = cell as! BukoliPointDialogCell
-        
         let index = indexPath.row
         let bukoliPoint = bukoliPoints[index]
         cell.index = index
         cell.bukoliPoint = bukoliPoint
+        
     }
     
-    // MARK: UICollectionViewDelegateFlowLayout
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return BukoliPointCell.sizeForItem(collectionView)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         let spacing = ((collectionView.frame.size.width - BukoliPointCell.sizeForItem(collectionView).width) - 2 * 10) / 2
         return UIEdgeInsets(top: 0, left: spacing+10, bottom: 0, right: spacing+10)
+        
     }
     
     // MARK: UIScrollViewDelegate
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if !swipeImageView.isHidden {
-            swipeImageView.isHidden =  true
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if !swipeImageView.hidden {
+            swipeImageView.hidden =  true
         }
+        
     }
     
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let newTargetOffset = calculateTargetOffset(scrollView, targetContentOffset: targetContentOffset.pointee)
-        targetContentOffset.pointee.x = newTargetOffset
+    func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let newTargetOffset = calculateTargetOffset(scrollView, targetContentOffset: targetContentOffset.memory)
+        targetContentOffset.memory.x = newTargetOffset
     }
     
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        updateMap()
-//    }
-//    
-//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        if !decelerate {
-//            updateMap()
-//        }
-//    }
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        
+        updateMap()
+    }
     
     // MARK: Offset Calculation
     
-    func calculateTargetOffset(_ scrollView: UIScrollView, targetContentOffset: CGPoint) -> CGFloat {
+    func calculateTargetOffset(scrollView: UIScrollView, targetContentOffset: CGPoint) -> CGFloat {
         
         let contentWidth = Float(scrollView.contentSize.width)
         let pageWidth = Float(BukoliPointCell.sizeForItem(scrollView).width + 10)
@@ -117,55 +113,52 @@ class BukoliDetailDialog: UIViewController, UICollectionViewDataSource, UICollec
         return CGFloat(newTargetOffset);
     }
     
-    func indexForOffset(_ scrollView: UIScrollView, currentOffset: CGFloat) -> Int {
+    func indexForOffset(scrollView: UIScrollView, currentOffset: CGFloat) -> Int {
         return Int(currentOffset / (BukoliPointCell.sizeForItem(scrollView).width + 10))
     }
-    
-    
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        collectionView.isHidden = true
-        swipeImageView.tintColor = UIColor.white
+        collectionView.hidden = true
+        swipeImageView.tintColor = UIColor.whiteColor()
         
         collectionView.decelerationRate = UIScrollViewDecelerationRateFast
         
         isScrolled = false
-        let bukoliUserDefault = UserDefaults(suiteName: "bukoli")!
-        if bukoliUserDefault.bool(forKey: "isSwipeShownBefore") {
-            swipeImageView.isHidden = true
-        }
-        else {
-            bukoliUserDefault.set(true, forKey: "isSwipeShownBefore")
+        let bukoliUserDefault = NSUserDefaults(suiteName: "bukoli")!
+        
+        if bukoliUserDefault.boolForKey("isSwipeShownBefore"){
+            swipeImageView.hidden = true
+        } else{
+            bukoliUserDefault.setObject(true, forKey: "isSwipeShownBefore")
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         if (!isScrolled) {
             isScrolled = true
-            collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: false)
-            collectionView.isHidden = false
-            //            bukoliMapViewController.moveMap(bukoliPoints[index])
+            self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem:index,
+                inSection:0),atScrollPosition: .CenteredHorizontally,animated: false)
+            collectionView.hidden = false
         }
         
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         self.collectionView.collectionViewLayout.invalidateLayout()
         
         let index = indexForOffset(self.collectionView, currentOffset: self.collectionView.contentOffset.x);
         
-        coordinator.animate(alongsideTransition: { _ in
-            let indexPath = IndexPath(row: index, section: 0)
-            self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
-        }, completion:nil)
-        
+        coordinator.animateAlongsideTransition( { _ in
+            let indexPath = NSIndexPath(forRow:index, inSection: 0)
+            self.collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredHorizontally, animated: false)
+            }, completion:nil)
     }
     
 }

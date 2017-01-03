@@ -14,7 +14,7 @@ public class WorkingHours: Mappable {
     public var saturday: WorkingHour!
     public var sunday: WorkingHour!
     
-    public required init?(map: Map) {
+    public required init?(_ map: Map) {
         
     }
     

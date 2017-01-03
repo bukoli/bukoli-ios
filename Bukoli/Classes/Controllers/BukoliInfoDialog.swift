@@ -15,8 +15,8 @@ class BukoliInfoDialog: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction func close(_ sender: AnyObject) {
-        self.dismiss(animated: true, completion: nil)
+    @IBAction func close(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: - Lifecycle
@@ -28,5 +28,4 @@ class BukoliInfoDialog: UIViewController {
         self.descriptionLabel.text = String(format: self.descriptionLabel.text!, Bukoli.sharedInstance.brandName2)
         self.step1Label.text = String(format: self.step1Label.text!, Bukoli.sharedInstance.brandName)
     }
-    
 }

@@ -13,11 +13,11 @@ class BukoliResponse<T: Mappable>: Mappable {
     var data: [T]!
     var address: String?
     
-    required init?(map: Map) {
+    required init?(_ map: Map) {
         
     }
     
-    public func mapping(map: Map) {
+    func mapping(map: Map) {
         data    <- map["data"]
         address <- map["address"]
     }

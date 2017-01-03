@@ -9,7 +9,7 @@
 import UIKit
 
 class BukoliPhoneDialog: UIViewController, UITextFieldDelegate {
-
+    
     @IBOutlet weak var phoneNumberLabel: UITextField!
     @IBOutlet weak var centerYConstraint: NSLayoutConstraint!
     
@@ -17,41 +17,40 @@ class BukoliPhoneDialog: UIViewController, UITextFieldDelegate {
     
     // MARK: - Actions
     
-    @IBAction func save(_ sender: AnyObject) {
+    @IBAction func save(sender: AnyObject) {
         
         // Validate Phone Number
         var phoneNumber = String(phoneNumberLabel.text!.characters.filter {
-            return String($0).rangeOfCharacter(from: CharacterSet(charactersIn: "0123456789")) != nil
-        })
+            return String($0).rangeOfCharacterFromSet(NSCharacterSet(charactersInString: "0123456789")) != nil
+            })
         
         if (phoneNumber.characters.count < 11) {
             // Error
-            let alert = UIAlertController(title: "Hata", message: "Girdiğiniz telefon numarası hatalıdır.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Tamam", style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            let alert = UIAlertController(title: "Hata", message: "Girdiğiniz telefon numarası hatalıdır.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Tamam", style: UIAlertActionStyle.Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
             return
         }
         
         // Remove first 0
-        phoneNumber.characters.removeFirst()
+        phoneNumber = String(phoneNumber.characters.dropFirst())
         
         Bukoli.sharedInstance.phoneNumber = phoneNumber
         
-        self.dismiss(animated: true) {
+        self.dismissViewControllerAnimated(true, completion: {
             self.bukoliMapViewController.close(sender)
-        }
+        })
     }
     
-    @IBAction func close(_ sender: AnyObject) {
+    @IBAction func close(sender: AnyObject) {
         bukoliMapViewController.definesPresentationContext = true
         view.endEditing(true)
-        dismiss(animated: true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: - UITextFieldDelegate
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         // TODO: Reimplement Phone Formatting
         let length = textField.text!.characters.count
         
@@ -59,7 +58,7 @@ class BukoliPhoneDialog: UIViewController, UITextFieldDelegate {
         if (range.length == 1) {
             if length > range.location {
                 let newPosition = textField.endOfDocument
-                textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
+                textField.selectedTextRange = textField.textRangeFromPosition(newPosition, toPosition: newPosition)
             }
             return true
         }
@@ -93,36 +92,28 @@ class BukoliPhoneDialog: UIViewController, UITextFieldDelegate {
     
     // MARK: - Keyboard
     
-    func keyboardWillShow(_ notification: Notification) {
+    func keyboardWillShow(notification: NSNotification) {
         if let userInfo = notification.userInfo {
-            let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-            let duration:TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue()
+            let duration:NSTimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
             let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
-            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions.curveEaseInOut.rawValue
+            let animationCurveRaw = animationCurveRawNSN?.unsignedIntegerValue ?? UIViewAnimationOptions.CurveEaseInOut.rawValue
             let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
             
             self.centerYConstraint.constant = -endFrame!.size.height / 2;
-            UIView.animate(withDuration: duration,
-                                       delay: TimeInterval(0),
-                                       options: animationCurve,
-                                       animations: { self.view.layoutIfNeeded() },
-                                       completion: nil)
+            UIView.animateWithDuration(duration, delay: NSTimeInterval(0), options: animationCurve, animations: {self.view.layoutIfNeeded()}, completion: nil)
         }
     }
     
-    func keyboardWillHide(_ notification: Notification) {
+    func keyboardWillHide(notification: NSNotification) {
         if let userInfo = notification.userInfo {
-            let duration:TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let duration:NSTimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
             let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
-            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions.curveEaseInOut.rawValue
+            let animationCurveRaw = animationCurveRawNSN?.unsignedIntegerValue ?? UIViewAnimationOptions.CurveEaseInOut.rawValue
             let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
             
             self.centerYConstraint.constant = 0;
-            UIView.animate(withDuration: duration,
-                           delay: TimeInterval(0),
-                           options: animationCurve,
-                           animations: { self.view.layoutIfNeeded() },
-                           completion: nil)
+            UIView.animateWithDuration(duration, delay: NSTimeInterval(0), options: animationCurve,animations: { self.view.layoutIfNeeded() }, completion: nil)
         }
     }
     
@@ -130,17 +121,17 @@ class BukoliPhoneDialog: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    override func viewDidDisappear( animated: Bool) {
         super.viewDidDisappear(animated)
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
     
 }

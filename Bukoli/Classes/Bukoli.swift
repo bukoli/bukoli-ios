@@ -22,7 +22,7 @@ public class Bukoli
 {
     public static let sharedInstance = Bukoli()
     
-    fileprivate init() {}
+    private init() {}
     
     var completion: ((BukoliResult, BukoliPoint?, String?) -> Void)!
     var password: String!
@@ -37,13 +37,13 @@ public class Bukoli
     public var brandName = "Marka"
     public var brandName2 = "Marka'dan"
     public var buttonBackgroundColor = UIColor.bukoliOrange()
-    public var buttonTextColor = UIColor.white
+    public var buttonTextColor = UIColor.whiteColor()
     
-    public class func initialize(_ password: String) {
+    public class func initialize(password: String) {
         Bukoli.sharedInstance.password = password
     }
     
-    public class func setUser(_ userCode: String, _ phone: String?, _ email: String?) {
+    public class func setUser(userCode: String, phone: String?, email: String?) {
         Bukoli.sharedInstance.userCode = userCode
         Bukoli.sharedInstance.phone = phone
         Bukoli.sharedInstance.email = email
@@ -58,7 +58,7 @@ public class Bukoli
         return (Bukoli.sharedInstance.userCode != nil) && !Bukoli.sharedInstance.userCode!.isEmpty
     }
     
-    public class func select(_ presenterViewController: UIViewController, _ completion: @escaping (_ result: BukoliResult, _ point: BukoliPoint?, _ phoneNumber: String?) -> Void) {
+    public class func select(presenterViewController: UIViewController, completion:(result: BukoliResult, point: BukoliPoint?, phoneNumber: String?) -> Void) {
         if (!isInitialized()) {
             assertionFailure("Bukoli SDK must be initialized.")
         }
@@ -74,32 +74,35 @@ public class Bukoli
         let storyboard = UIStoryboard(name:"Bukoli", bundle:Bukoli.bundle())
         let viewController = storyboard.instantiateInitialViewController()
         
-        presenterViewController.present(viewController!, animated: true, completion: nil)
+        presenterViewController.presentViewController(viewController!, animated: true, completion: nil)
     }
     
-    public class func info(_ presenterViewController: UIViewController) {
+    public class func info(presenterViewController: UIViewController) {
         if (!isInitialized()) {
             assertionFailure("Bukoli SDK must be initialized.")
         }
         
         let storyboard = UIStoryboard(name:"Bukoli", bundle:Bukoli.bundle())
-        let viewController = storyboard.instantiateViewController(withIdentifier: "BukoliInfoDialog") as! BukoliInfoDialog
-        viewController.modalPresentationStyle = .overCurrentContext
-        viewController.modalTransitionStyle = .crossDissolve
+        let viewController = storyboard.instantiateViewControllerWithIdentifier("BukoliInfoDialog") as! BukoliInfoDialog
         
-        presenterViewController.present(viewController, animated: true, completion: nil)
+        viewController.modalPresentationStyle = .OverCurrentContext
+        viewController.modalTransitionStyle = .CrossDissolve
+        
+        
+        presenterViewController.presentViewController(viewController, animated: true, completion: nil)
     }
     
-    public class func pointStatus(_ pointCode: String ,_ completion: @escaping (_ result: BukoliPointResult, _ point: BukoliPoint?) -> Void) {
+    public class func pointStatus(pointCode: String ,completion:(result: BukoliPointResult, point: BukoliPoint?) -> Void) {
         if (!isInitialized()) {
             assertionFailure("Bukoli SDK must be initialized.")
         }
-        WebService.GET(uri: String(format:"point/%@", pointCode), parameters: nil, success: { (point: BukoliPoint) in
-            completion(point.state == 1 ? .enabled : .disabled, point)
+        WebService.GET(String(format:"point/%@", pointCode), parameters: nil, success: { (point: BukoliPoint) in
+            completion(result: point.state == 1 ? .enabled : .disabled, point: point)
         }) { (error: Error) in
-            completion(.notFound, nil)
+            completion(result: .notFound, point: nil)
         }
     }
+    
     
     class func complete() {
         let point = Bukoli.sharedInstance.bukoliPoint
@@ -114,21 +117,21 @@ public class Bukoli
             result = .phoneNumberMissing
         }
         
-        var parameters : [String: Any] = [:]
+        var parameters : [String: AnyObject] = [:]
         if (phoneNumber != nil) {
             parameters["phone"] = phoneNumber
         }
         
         if (result != .pointNotSelected) {
-            WebService.POST(uri: String(format: "point/%d/send", point!.id), parameters: parameters)
+            WebService.POST(String(format: "point/%d/send", point!.id), parameters: parameters)
         }
         
         Bukoli.sharedInstance.completion(result, point, phoneNumber)
     }
     
-    class func bundle() -> Bundle {
-        let bundle = Bundle(for: self)
-        let bundleUrl = bundle.url(forResource: "Bukoli", withExtension: "bundle")!
-        return Bundle(url: bundleUrl)!
+    class func bundle() -> NSBundle {
+        let bundle = NSBundle(forClass: self)
+        let bundleUrl = bundle.URLForResource("Bukoli", withExtension: "bundle")!
+        return NSBundle(URL: bundleUrl)!
     }
 }

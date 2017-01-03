@@ -13,7 +13,7 @@ public class Location: Mappable {
     public var latitude: Double!
     public var longitude: Double!
     
-    public required init?(map: Map) {
+    public required init?(_ map: Map) {
         
     }
     
