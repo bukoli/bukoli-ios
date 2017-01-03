@@ -48,6 +48,28 @@ Then, run the following command:
 
 ```bash
 $ pod install
+``` 
+
+### Swift 2
+
+*For swift 2 use version 0.2*
+
+https://github.com/bukoli/bukoli-ios/tree/swift2
+
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+
+target '<Your Target Name>' do
+    pod 'Bukoli', '~> 0.2'
+end
+``` 
+
+Then, run the following command:
+
+```bash
+$ pod install
 ```
 
 ### Api Key
@@ -65,19 +87,19 @@ Insert the following XML snippet into the body of your file just before the fina
 <key>NSLocationWhenInUseUsageDescription</key>
 <string>{Human readable reason for location access}</string>
 <dict>
-	<key>NSAllowsArbitraryLoads</key>
-	<false/>
-	<key>NSExceptionDomains</key>
+    <key>NSAllowsArbitraryLoads</key>
+    <false/>
+    <key>NSExceptionDomains</key>
     <dict>
         <key>bukoli.borusan.com</key>
         <dict>
             <key>NSTemporaryExceptionRequiresForwardSecrecy</key>
             <false/>
         </dict>
-		<key>bukoli.mobillium.com</key>
-		<dict>
-			<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
-			<true/>
+        <key>bukoli.mobillium.com</key>
+        <dict>
+            <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+            <true/>
         </dict>
     </dict>
 </dict>
@@ -90,11 +112,11 @@ AppDelegate.swift
 import Bukoli
 
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-	// Override point for customization after application launch.
-	...
-	Bukoli.initialize("your api key")
-	..
-	return true
+    // Override point for customization after application launch.
+    ...
+    Bukoli.initialize("your api key")
+    ..
+    return true
 }
 
 ```
@@ -161,11 +183,11 @@ import Bukoli
 Bukoli.pointStatus(pointCode, { (result, point) in
     switch(result) {
     case .enabled:
-    	// Point is enabled
+        // Point is enabled
     case .disabled:
-    	// Point is disabled
+        // Point is disabled
     case .notFound:
-    	// Point not found
+        // Point not found
     }
 })
 
