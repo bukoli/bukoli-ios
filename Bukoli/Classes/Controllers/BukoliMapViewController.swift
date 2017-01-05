@@ -50,6 +50,8 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
             bukoliPhoneDialog.bukoliMapViewController = self
         }
         if (segue.identifier == "BukoliInfo") {
+            let bukoliPhoneDialog = segue.destinationViewController as! BukoliInfoDialog
+            bukoliPhoneDialog.bukoliMapViewController = self
             definesPresentationContext = false
         }
     }
@@ -134,7 +136,7 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         bukoliCell.bukoliPoint = bukoliPoint
     }
     
-    func tableView(tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     
@@ -366,7 +368,6 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         mapView.mapType = .Standard
         mapView.showsUserLocation = true
         mapView.rotateEnabled = false
-        
         lastKnownLocation = CLLocation(latitude: 41.04113936, longitude: 28.99533076)
         currentLocation = lastKnownLocation
         let viewRegion = MKCoordinateRegionMakeWithDistance(currentLocation.coordinate, 25000, 25000)
@@ -402,7 +403,6 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
                 }))
                 self.presentViewController(alert, animated: true, completion: nil)
         })
-        
         
         // Information
         WebService.GET("information", parameters: nil, success: {

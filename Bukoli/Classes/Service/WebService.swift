@@ -131,6 +131,7 @@ class WebService {
                 
                 if (response.result.isSuccess) {
                     // Success
+                    print(response.result.value)
                     let data = response.result.value as! [[String: AnyObject]]
                     if let object = Mapper<T>().mapArray(data) {
                         success(object as [T])

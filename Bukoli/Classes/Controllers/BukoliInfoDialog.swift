@@ -12,10 +12,11 @@ class BukoliInfoDialog: UIViewController {
     
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var step1Label: UILabel!
-    
+    var bukoliMapViewController:BukoliMapViewController?
     // MARK: - Actions
     
     @IBAction func close(sender: AnyObject) {
+        bukoliMapViewController?.definesPresentationContext = true
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
