@@ -50,6 +50,8 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
             bukoliPhoneDialog.bukoliMapViewController = self
         }
         if (segue.identifier == "BukoliInfo") {
+            let bukoliPhoneDialog = segue.destination as! BukoliInfoDialog
+            bukoliPhoneDialog.bukoliMapViewController = self
             definesPresentationContext = false
         }
     }
@@ -403,7 +405,6 @@ class BukoliMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
             self.present(alert, animated: true, completion: nil)
         })
 
-        
         // Information
         WebService.GET(uri: "information", parameters: nil, success: {
             (response: Information) in
