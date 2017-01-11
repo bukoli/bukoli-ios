@@ -10,7 +10,7 @@ You can sign up for a Bukoli account at http://www.bukoli.com.
 ## Requirements
 
 - iOS 8.0+
-- Xcode 8.1+
+- Xcode 7.3+
 - Swift 2.3
 
 ## Dependencies
@@ -40,7 +40,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'Bukoli', '~> 0.2'
+    pod 'Bukoli', '~> 0.1'
 end
 ```
 

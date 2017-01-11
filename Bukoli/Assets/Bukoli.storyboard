@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PFi-Aj-Uha">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="NO" initialViewController="PFi-Aj-Uha">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <development version="7000" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
-        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -36,38 +33,38 @@
                         <viewControllerLayoutGuide type="bottom" id="gId-Rl-WbP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="K5t-J1-yXl">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ph3-5u-zRB" userLabel="Close View">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ph3-5u-zRB" userLabel="Close View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="FaZ-nh-bg5" appends="YES" id="OIH-KE-3nj"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jq1-gd-6N2" customClass="BukoliRoundedView" customModule="Bukoli" customModuleProvider="target">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jq1-gd-6N2" customClass="BukoliRoundedView" customModule="Bukoli" customModuleProvider="target">
                                 <rect key="frame" x="20.5" y="62" width="279.5" height="444"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="0BV-eA-S9Z">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="0BV-eA-S9Z">
                                         <rect key="frame" x="125.5" y="0.0" width="154" height="124"/>
                                     </imageView>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nn3-Tg-6cd">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nn3-Tg-6cd">
                                         <rect key="frame" x="0.0" y="10" width="279.5" height="424"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F8U-p4-Z4u">
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F8U-p4-Z4u">
                                                 <rect key="frame" x="0.0" y="0.0" width="279.5" height="424"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gia-nC-czc" userLabel="Top Content View">
+                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gia-nC-czc" userLabel="Top Content View">
                                                         <rect key="frame" x="0.0" y="0.0" width="279.5" height="112"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Bukoli Nedir?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHK-8p-YHk">
                                                                 <rect key="frame" x="15" y="5" width="103" height="20"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                                <color key="textColor" red="0.95686274509803915" green="0.67843137254901964" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="textColor" red="0.97032958269119263" green="0.72867709398269653" blue="0.10528022795915604" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n0w-VE-6dD">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n0w-VE-6dD">
                                                                 <rect key="frame" x="15" y="33" width="249.5" height="79"/>
                                                                 <string key="text">Bukoli, %@ aldığınız ürünleri, ister mesai sonrası, isterseniz de yolunuzun üstünden kısacası size neresi uygunsa oradan teslim almanızı sağlayan yepyeni bir sistem. Anlaşmalı Bukoli noktalarından size en uygunu seçin ve kolinizi teslim alın.</string>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -75,7 +72,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstItem="eHK-8p-YHk" firstAttribute="leading" secondItem="Gia-nC-czc" secondAttribute="leading" constant="15" id="EOF-Dq-DHH"/>
                                                             <constraint firstAttribute="bottom" secondItem="n0w-VE-6dD" secondAttribute="bottom" id="Faj-LK-3be"/>
@@ -85,7 +82,7 @@
                                                             <constraint firstItem="eHK-8p-YHk" firstAttribute="top" secondItem="Gia-nC-czc" secondAttribute="top" constant="5" id="xkr-cH-kCv"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" horizontalHuggingPriority="500" verticalHuggingPriority="500" translatesAutoresizingMaskIntoConstraints="NO" id="X4Y-Re-aTU" userLabel="Bottom Content View">
+                                                    <view contentMode="scaleToFill" horizontalHuggingPriority="500" verticalHuggingPriority="500" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X4Y-Re-aTU" userLabel="Bottom Content View">
                                                         <rect key="frame" x="0.0" y="112" width="279.5" height="312"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ghi-be-EZF">
@@ -95,7 +92,7 @@
                                                                     <constraint firstAttribute="width" constant="68" id="x1e-dX-8SJ"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%@ alışverişinizi tamamlayın ve teslimat seçeneklerinde Bukoli'yi seçin" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hze-6f-dyp">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="%@ alışverişinizi tamamlayın ve teslimat seçeneklerinde Bukoli'yi seçin" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hze-6f-dyp">
                                                                 <rect key="frame" x="98" y="10" width="166.5" height="68"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <nil key="textColor"/>
@@ -104,7 +101,7 @@
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="xxr-xY-0Km">
                                                                 <rect key="frame" x="15" y="88" width="68" height="68"/>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size en uygun Bukoli noktasını haritadan seçin" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRP-5y-yeA">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Size en uygun Bukoli noktasını haritadan seçin" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRP-5y-yeA">
                                                                 <rect key="frame" x="98" y="88" width="166.5" height="68"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <nil key="textColor"/>
@@ -113,7 +110,7 @@
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3" translatesAutoresizingMaskIntoConstraints="NO" id="URd-J9-GX4">
                                                                 <rect key="frame" x="15" y="166" width="68" height="68"/>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cep telefonunuza gelen sms bilgilerini saklayın" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3X-Mg-73W">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Cep telefonunuza gelen sms bilgilerini saklayın" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3X-Mg-73W">
                                                                 <rect key="frame" x="98" y="166" width="166.5" height="68"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <nil key="textColor"/>
@@ -122,14 +119,14 @@
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4" translatesAutoresizingMaskIntoConstraints="NO" id="PPq-q4-N96">
                                                                 <rect key="frame" x="15" y="244" width="68" height="68"/>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seçtiğiniz Bukoli teslimat noktasında teslimat kodunu paylaşın ve kolinizi güvenle teslim alın" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dug-7e-FL8">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Seçtiğiniz Bukoli teslimat noktasında teslimat kodunu paylaşın ve kolinizi güvenle teslim alın" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dug-7e-FL8">
                                                                 <rect key="frame" x="98" y="244" width="166.5" height="68"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstItem="PPq-q4-N96" firstAttribute="top" secondItem="URd-J9-GX4" secondAttribute="bottom" constant="10" id="1zW-St-am2"/>
                                                             <constraint firstItem="xxr-xY-0Km" firstAttribute="top" secondItem="Ghi-be-EZF" secondAttribute="bottom" constant="10" id="2no-HJ-Q1H"/>
@@ -165,7 +162,7 @@
                                                         </constraints>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="X4Y-Re-aTU" firstAttribute="top" secondItem="Gia-nC-czc" secondAttribute="bottom" id="8pC-A2-Si4"/>
                                                     <constraint firstAttribute="bottom" secondItem="X4Y-Re-aTU" secondAttribute="bottom" id="BrS-oa-t3z"/>
@@ -177,7 +174,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="F8U-p4-Z4u" secondAttribute="trailing" id="0De-2g-yaN"/>
                                             <constraint firstItem="F8U-p4-Z4u" firstAttribute="top" secondItem="nn3-Tg-6cd" secondAttribute="top" id="J6T-cN-Kee"/>
@@ -185,7 +182,7 @@
                                             <constraint firstAttribute="bottom" secondItem="F8U-p4-Z4u" secondAttribute="bottom" id="Y1i-PM-LmW"/>
                                         </constraints>
                                     </scrollView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1PO-Jt-J9M">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1PO-Jt-J9M">
                                         <rect key="frame" x="241.5" y="0.0" width="38" height="42"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                         <state key="normal" image="Close"/>
@@ -194,7 +191,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="1PO-Jt-J9M" secondAttribute="trailing" id="3rQ-98-xrV"/>
                                     <constraint firstItem="nn3-Tg-6cd" firstAttribute="leading" secondItem="jq1-gd-6N2" secondAttribute="leading" id="5X0-lT-s99"/>
@@ -210,7 +207,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="jq1-gd-6N2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="K5t-J1-yXl" secondAttribute="top" constant="15" id="Ifi-9T-jpd"/>
@@ -247,13 +244,13 @@
                         <viewControllerLayoutGuide type="bottom" id="uHS-tW-sIr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oRv-hX-8tg">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="180" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="VJS-9H-oRX">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="180" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="VJS-9H-oRX">
                                 <rect key="frame" x="0.0" y="64" width="320" height="452"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="separatorColor" red="0.79525351524353027" green="0.79525351524353027" blue="0.79525351524353027" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="BukoliPointCell" id="Svm-Ma-wWg" customClass="BukoliPointCell" customModule="Bukoli" customModuleProvider="target">
@@ -298,7 +295,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="DpV-uP-bzR" secondAttribute="trailing" constant="8" id="2Rp-dq-qvR"/>
                                                         <constraint firstItem="DpV-uP-bzR" firstAttribute="top" secondItem="THf-tz-0ar" secondAttribute="bottom" id="763-7o-58Y"/>
@@ -317,7 +314,7 @@
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vd0-Zx-Ig7" customClass="BukoliDistanceLabel" customModule="Bukoli" customModuleProvider="target">
                                                     <rect key="frame" x="106" y="104" width="50" height="15"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.99999600648880005" green="1" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -326,7 +323,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
                                                     <state key="normal" title="Bu Noktaya Gönder">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="selectPoint:" destination="Svm-Ma-wWg" eventType="touchUpInside" id="bh0-Py-FSB"/>
@@ -363,16 +360,16 @@
                                     <outlet property="delegate" destination="4hT-ui-i4s" id="bNW-1o-fgb"/>
                                 </connections>
                             </tableView>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WE2-yT-H3L">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WE2-yT-H3L">
                                 <rect key="frame" x="0.0" y="64" width="320" height="452"/>
                                 <connections>
                                     <outlet property="delegate" destination="4hT-ui-i4s" id="Ol8-f1-hXe"/>
                                 </connections>
                             </mapView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" image="Annotation Center" translatesAutoresizingMaskIntoConstraints="NO" id="zVk-OX-ibv">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" misplaced="YES" image="Annotation Center" translatesAutoresizingMaskIntoConstraints="NO" id="zVk-OX-ibv">
                                 <rect key="frame" x="138" y="256" width="45" height="45"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kRx-fj-jJg" userLabel="Information View">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kRx-fj-jJg" userLabel="Information View">
                                 <rect key="frame" x="0.0" y="516" width="320" height="52"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="nE8-X0-tCa">
@@ -381,23 +378,23 @@
                                             <constraint firstAttribute="width" secondItem="nE8-X0-tCa" secondAttribute="height" id="X9X-vj-dtS"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mg7-cy-w0u">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mg7-cy-w0u">
                                         <rect key="frame" x="268" y="0.0" width="52" height="52"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                         <state key="normal" image="Info"/>
                                         <connections>
                                             <segue destination="tW7-NP-ApY" kind="presentation" identifier="BukoliInfo" animates="NO" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="lUq-sf-Md2"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Bukoli" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5F-8W-x6k">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" misplaced="YES" text="Bukoli" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5F-8W-x6k">
                                         <rect key="frame" x="63" y="0.0" width="205" height="52"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.40781933069229126" green="0.40781933069229126" blue="0.40781933069229126" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="J5F-8W-x6k" secondAttribute="bottom" id="6yp-i5-XEE"/>
                                     <constraint firstItem="J5F-8W-x6k" firstAttribute="top" secondItem="kRx-fj-jJg" secondAttribute="top" id="F7h-Gn-Bly"/>
@@ -413,17 +410,17 @@
                                     <constraint firstItem="nE8-X0-tCa" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kRx-fj-jJg" secondAttribute="top" id="wmb-zN-muY"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N7q-UW-71x">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N7q-UW-71x">
                                 <rect key="frame" x="256" y="400" width="44" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDd-6E-9bQ" customClass="BukoliRoundedButton" customModule="Bukoli" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDd-6E-9bQ" customClass="BukoliRoundedButton" customModule="Bukoli" customModuleProvider="target">
                                 <rect key="frame" x="256" y="400" width="44" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="KDd-6E-9bQ" secondAttribute="height" id="wSc-qy-yAB"/>
                                 </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" image="Map Center"/>
                                 <state key="selected" image="Map"/>
@@ -431,11 +428,11 @@
                                     <action selector="centerButtonTapped:" destination="4hT-ui-i4s" eventType="touchUpInside" id="8ZY-k3-Tn5"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VTI-AM-89k">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VTI-AM-89k">
                                 <rect key="frame" x="256" y="452" width="44" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7t9-F9-uOv" customClass="BukoliFabButton" customModule="Bukoli" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7t9-F9-uOv" customClass="BukoliFabButton" customModule="Bukoli" customModuleProvider="target">
                                 <rect key="frame" x="256" y="452" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="7t9-F9-uOv" secondAttribute="height" id="pzt-cv-x3a"/>
@@ -447,7 +444,7 @@
                                     <action selector="switchButtonTapped:" destination="4hT-ui-i4s" eventType="touchUpInside" id="Kjf-46-Wcr"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="2tB-UT-Pfu">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="2tB-UT-Pfu">
                                 <rect key="frame" x="130" y="254" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="NTx-YL-omc"/>
@@ -455,7 +452,7 @@
                                 </constraints>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="2tB-UT-Pfu" firstAttribute="centerY" secondItem="oRv-hX-8tg" secondAttribute="centerY" id="3xZ-Q1-7rx"/>
                             <constraint firstAttribute="bottom" secondItem="kRx-fj-jJg" secondAttribute="bottom" id="3xb-zL-RuC"/>
@@ -529,19 +526,19 @@
                         <viewControllerLayoutGuide type="bottom" id="6IH-JZ-A85"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OTS-Bd-Evn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JBJ-Vz-0UF" userLabel="Close View">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JBJ-Vz-0UF" userLabel="Close View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Lsi-mb-5g0" appends="YES" id="dyD-yp-cYa"/>
                                 </connections>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIy-ye-7gq">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIy-ye-7gq">
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="eZi-AF-GyO">
                                     <size key="itemSize" width="300" height="548"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -559,7 +556,7 @@
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e76-C2-Nbm" userLabel="Close View">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQu-Gi-YI2" customClass="BukoliRoundedView" customModule="Bukoli" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="178.5" width="300" height="192"/>
@@ -568,16 +565,16 @@
                                                             <rect key="frame" x="146" y="0.0" width="154" height="124"/>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4BG-vK-XIX">
-                                                            <rect key="frame" x="10" y="14" width="22" height="22"/>
+                                                            <rect key="frame" x="10" y="15" width="22" height="22"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZi-3T-Bs5">
                                                                     <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstItem="IZi-3T-Bs5" firstAttribute="top" secondItem="4BG-vK-XIX" secondAttribute="top" id="33A-GE-lda"/>
                                                                 <constraint firstItem="IZi-3T-Bs5" firstAttribute="leading" secondItem="4BG-vK-XIX" secondAttribute="leading" id="4fg-CR-YRQ"/>
@@ -588,49 +585,49 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nokta Adı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tD-7t-Vx8">
-                                                            <rect key="frame" x="40" y="15" width="214" height="20.5"/>
+                                                            <rect key="frame" x="40" y="15" width="214" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="38e-cG-C4B">
-                                                            <rect key="frame" x="8" y="43.5" width="284" height="96.5"/>
+                                                            <rect key="frame" x="8" y="44" width="284" height="96"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="frt-Tf-l1m">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="96.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="96"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="frt-Tf-l1m" secondAttribute="height" multiplier="4:3" id="N8g-wF-Tbh"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqa-QE-VRM" customClass="BukoliDistanceLabel" customModule="Bukoli" customModuleProvider="target">
-                                                                    <rect key="frame" x="74.5" y="78" width="49.5" height="14.5"/>
-                                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
+                                                                    <rect key="frame" x="74" y="77" width="50" height="15"/>
+                                                                    <color key="backgroundColor" red="0.99999600648880005" green="1" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pI5-0q-QfC">
-                                                                    <rect key="frame" x="128" y="0.0" width="156" height="96.5"/>
+                                                                    <rect key="frame" x="128" y="0.0" width="156" height="96"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Adres" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="hna-Fq-zeG">
-                                                                            <rect key="frame" x="8" y="0.0" width="140" height="13.5"/>
+                                                                            <rect key="frame" x="8" y="0.0" width="140" height="14"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Çalışma Saatleri" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79C-bt-qY7">
-                                                                            <rect key="frame" x="8" y="52" width="140" height="12"/>
+                                                                            <rect key="frame" x="8" y="51" width="140" height="12"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Hafta içi: 08:00 - 24:00 Cumartesi: 08:00  - 24:00 Pazar: 09:00 - 24:00" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cld-1U-9ZJ">
-                                                                            <rect key="frame" x="8" y="64" width="140" height="32.5"/>
+                                                                            <rect key="frame" x="8" y="63" width="140" height="33"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
-                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                                     <constraints>
                                                                         <constraint firstItem="Cld-1U-9ZJ" firstAttribute="top" secondItem="79C-bt-qY7" secondAttribute="bottom" id="BK1-CC-jD0"/>
                                                                         <constraint firstAttribute="bottom" secondItem="Cld-1U-9ZJ" secondAttribute="bottom" id="CNa-zJ-AAe"/>
@@ -645,7 +642,7 @@
                                                                     </constraints>
                                                                 </view>
                                                             </subviews>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstItem="aqa-QE-VRM" firstAttribute="bottom" secondItem="frt-Tf-l1m" secondAttribute="bottom" constant="-4" id="1o7-6w-lOq"/>
                                                                 <constraint firstItem="pI5-0q-QfC" firstAttribute="height" secondItem="frt-Tf-l1m" secondAttribute="height" id="1ys-Fy-VDh"/>
@@ -672,14 +669,14 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
                                                             <state key="normal" title="Bu Noktaya Gönder">
-                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
                                                             <connections>
                                                                 <action selector="save:" destination="jte-kE-vPu" eventType="touchUpInside" id="2zw-6Z-31l"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="38e-cG-C4B" secondAttribute="trailing" constant="8" id="3sW-ZD-zy4"/>
@@ -726,11 +723,11 @@
                                     <outlet property="delegate" destination="dHq-fj-8gC" id="gew-Sn-dWx"/>
                                 </connections>
                             </collectionView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Swipe" translatesAutoresizingMaskIntoConstraints="NO" id="tdS-TN-3bH">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" misplaced="YES" image="Swipe" translatesAutoresizingMaskIntoConstraints="NO" id="tdS-TN-3bH">
                                 <rect key="frame" x="120" y="428" width="80" height="80"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="JBJ-Vz-0UF" firstAttribute="leading" secondItem="OTS-Bd-Evn" secondAttribute="leading" id="9uH-40-Mrm"/>
@@ -768,35 +765,35 @@
                         <viewControllerLayoutGuide type="bottom" id="vgh-p3-TpE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="H06-S0-KWv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hjs-iB-NyF" userLabel="Close View">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hjs-iB-NyF" userLabel="Close View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="kGT-wp-bzf" appends="YES" id="B1a-jW-rMY"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tLR-MB-eCq" customClass="BukoliRoundedView" customModule="Bukoli" customModuleProvider="target">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tLR-MB-eCq" customClass="BukoliRoundedView" customModule="Bukoli" customModuleProvider="target">
                                 <rect key="frame" x="17.5" y="191" width="285" height="186.5"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="KQg-ui-o3z">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="KQg-ui-o3z">
                                         <rect key="frame" x="131" y="0.0" width="154" height="124"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bukoli teslimat noktanız başarıyla eklenmiştir." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3a3-w5-hov">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Bukoli teslimat noktanız başarıyla eklenmiştir." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3a3-w5-hov">
                                         <rect key="frame" x="40" y="20" width="205" height="31.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lütfen teslimat kodunun iletilmesini istediğiniz cep telefonu numarasını giriniz." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3W-BL-9TV">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Lütfen teslimat kodunun iletilmesini istediğiniz cep telefonu numarasını giriniz." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3W-BL-9TV">
                                         <rect key="frame" x="8" y="59.5" width="269" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Telefon Numarası" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="esM-FW-uVR">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Telefon Numarası" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="esM-FW-uVR">
                                         <rect key="frame" x="8" y="104.5" width="269" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -805,18 +802,18 @@
                                             <outlet property="delegate" destination="NCh-Pt-eWw" id="AhE-Ue-62M"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmn-4d-hpL" customClass="BukoliButton" customModule="Bukoli" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmn-4d-hpL" customClass="BukoliButton" customModule="Bukoli" customModuleProvider="target">
                                         <rect key="frame" x="8" y="142.5" width="269" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
                                         <state key="normal" title="Kaydet">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="save:" destination="NCh-Pt-eWw" eventType="touchUpInside" id="RjL-06-QxE"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jiJ-xC-b5A">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jiJ-xC-b5A">
                                         <rect key="frame" x="247" y="0.0" width="38" height="42"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                         <state key="normal" image="Close"/>
@@ -825,7 +822,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="esM-FW-uVR" firstAttribute="leading" secondItem="tLR-MB-eCq" secondAttribute="leading" constant="8" id="1B3-4O-wcU"/>
                                     <constraint firstAttribute="trailing" secondItem="k3W-BL-9TV" secondAttribute="trailing" constant="8" id="6K4-jp-78z"/>
@@ -848,7 +845,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Hjs-iB-NyF" secondAttribute="trailing" id="0cE-Yb-66C"/>
@@ -884,12 +881,12 @@
                         <viewControllerLayoutGuide type="bottom" id="HnD-v0-Wia"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="A4B-VY-bYD">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pEz-aF-4AB">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pEz-aF-4AB">
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SuggestionCell" textLabel="A9T-6U-l3e" style="IBUITableViewCellStyleDefault" id="8iA-nE-LHF">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
@@ -919,7 +916,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="1" green="0.1491314172744751" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -932,7 +929,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="pEz-aF-4AB" secondAttribute="trailing" id="5y0-qy-fmM"/>
                             <constraint firstItem="pEz-aF-4AB" firstAttribute="leading" secondItem="A4B-VY-bYD" secondAttribute="leading" id="6Mb-6R-Ihu"/>

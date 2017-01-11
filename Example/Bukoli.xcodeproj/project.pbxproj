@@ -373,7 +373,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9126E7C67C88013D4C0A99F5 /* Pods-Bukoli_Example.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 4PWC9KX3UT;
@@ -392,7 +391,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8D84A15F26137CFDDD016F48 /* Pods-Bukoli_Example.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 4PWC9KX3UT;
