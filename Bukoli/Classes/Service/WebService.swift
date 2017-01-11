@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-private var baseUrl = "http://bukoli.mobillium.com/integration/"
+private var baseUrl = "https://api.bukoli.com/integration/"
 
 class WebService {
 //    
@@ -58,7 +58,6 @@ class WebService {
                 response in
                 if (response.result.isSuccess) {
                     // Success
-                    print(response.result.value)
                     let data = response.result.value as! [String: AnyObject]
                     if let object = Mapper<Token>().map(data) {
                         WebService.integrationToken = object.token
@@ -90,7 +89,6 @@ class WebService {
                 response in
                 if (response.result.isSuccess) {
                     // Success
-                    print(response.result.value)
                     let data = response.result.value as! [String: AnyObject]
                     if let object = Mapper<T>().map(data) {
                         success(object as T)
@@ -131,7 +129,6 @@ class WebService {
                 
                 if (response.result.isSuccess) {
                     // Success
-                    print(response.result.value)
                     let data = response.result.value as! [[String: AnyObject]]
                     if let object = Mapper<T>().mapArray(data) {
                         success(object as [T])

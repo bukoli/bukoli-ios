@@ -80,35 +80,39 @@ class BukoliDetailDialog: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let newTargetOffset = calculateTargetOffset(scrollView, targetContentOffset: targetContentOffset.memory)
+        let newTargetOffset = calculateTargetOffset(scrollView, velocity: velocity, targetContentOffset: targetContentOffset.memory)
         targetContentOffset.memory.x = newTargetOffset
     }
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        
-        updateMap()
-    }
+//    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+//        updateMap()
+//    }
+//    
+//    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        if !decelerate {
+//            updateMap()
+//        }
+//    }
     
     // MARK: Offset Calculation
     
-    func calculateTargetOffset(scrollView: UIScrollView, targetContentOffset: CGPoint) -> CGFloat {
-        
-        let contentWidth = Float(scrollView.contentSize.width)
-        let pageWidth = Float(BukoliPointCell.sizeForItem(scrollView).width + 10)
-        let currentOffset = Float(scrollView.contentOffset.x)
-        let targetOffset = Float(targetContentOffset.x)
-        
-        var newTargetOffset:Float = 0.0
-        
-        if targetOffset > currentOffset {
-            newTargetOffset = ceilf(currentOffset / pageWidth) * pageWidth
+    func calculateTargetOffset(scrollView: UIScrollView, velocity: CGPoint, targetContentOffset: CGPoint) -> CGFloat {
+        let pageWidth = BukoliPointCell.sizeForItem(collectionView).width + 10
+        let pageFloat = targetContentOffset.x/pageWidth;
+
+        var page = 0
+        if velocity.x > 0 {
+            page = Int(ceil(pageFloat))
+        }
+        else if velocity.x < 0 {
+            page = Int(floor(pageFloat))
         }
         else {
-            newTargetOffset = floorf(currentOffset / pageWidth) * pageWidth
+            page = Int(round(pageFloat))
         }
         
-        // Correction
-        newTargetOffset = min(max(newTargetOffset, 0), contentWidth)
+        // Page
+        let newTargetOffset = Float(page*Int(pageWidth))
         
         return CGFloat(newTargetOffset);
     }
