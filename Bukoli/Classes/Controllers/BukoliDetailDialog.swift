@@ -79,7 +79,7 @@ class BukoliDetailDialog: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let newTargetOffset = calculateTargetOffset(scrollView, targetContentOffset: targetContentOffset.pointee)
+        let newTargetOffset = calculateTargetOffset(scrollView, velocity: velocity, targetContentOffset: targetContentOffset.pointee)
         targetContentOffset.pointee.x = newTargetOffset
     }
     
@@ -95,24 +95,23 @@ class BukoliDetailDialog: UIViewController, UICollectionViewDataSource, UICollec
     
     // MARK: Offset Calculation
     
-    func calculateTargetOffset(_ scrollView: UIScrollView, targetContentOffset: CGPoint) -> CGFloat {
+    func calculateTargetOffset(_ scrollView: UIScrollView, velocity: CGPoint, targetContentOffset: CGPoint) -> CGFloat {
+        let pageWidth = BukoliPointCell.sizeForItem(collectionView).width + 10
+        let pageFloat = targetContentOffset.x/pageWidth;
         
-        let contentWidth = Float(scrollView.contentSize.width)
-        let pageWidth = Float(BukoliPointCell.sizeForItem(scrollView).width + 10)
-        let currentOffset = Float(scrollView.contentOffset.x)
-        let targetOffset = Float(targetContentOffset.x)
-        
-        var newTargetOffset:Float = 0.0
-        
-        if targetOffset > currentOffset {
-            newTargetOffset = ceilf(currentOffset / pageWidth) * pageWidth
+        var page = 0
+        if velocity.x > 0 {
+            page = Int(ceil(pageFloat))
+        }
+        else if velocity.x < 0 {
+            page = Int(floor(pageFloat))
         }
         else {
-            newTargetOffset = floorf(currentOffset / pageWidth) * pageWidth
+            page = Int(round(pageFloat))
         }
         
-        // Correction
-        newTargetOffset = min(max(newTargetOffset, 0), contentWidth)
+        // Page
+        let newTargetOffset = Float(page*Int(pageWidth))
         
         return CGFloat(newTargetOffset);
     }
@@ -120,8 +119,6 @@ class BukoliDetailDialog: UIViewController, UICollectionViewDataSource, UICollec
     func indexForOffset(_ scrollView: UIScrollView, currentOffset: CGFloat) -> Int {
         return Int(currentOffset / (BukoliPointCell.sizeForItem(scrollView).width + 10))
     }
-    
-    
     
     // MARK: - Lifecycle
     override func viewDidLoad() {

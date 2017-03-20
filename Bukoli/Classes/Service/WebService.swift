@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-private var baseUrl = "http://bukoli.mobillium.com/integration/"
+private var baseUrl = "https://api.bukoli.com/integration/"
 
 class WebService {
     

@@ -40,7 +40,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'Bukoli', '~> 1.2'
+    pod 'Bukoli', '~> 1.3'
 end
 ```
 
@@ -52,7 +52,7 @@ $ pod install
 
 ### Swift 2
 
-*For swift 2 use version 0.2*
+*For swift 2 use version 0.3*
 
 https://github.com/bukoli/bukoli-ios/tree/swift2
 
@@ -62,7 +62,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'Bukoli', '~> 0.2'
+    pod 'Bukoli', '~> 0.3'
 end
 ``` 
 
@@ -86,23 +86,6 @@ Insert the following XML snippet into the body of your file just before the fina
 ```xml
 <key>NSLocationWhenInUseUsageDescription</key>
 <string>{Human readable reason for location access}</string>
-<dict>
-    <key>NSAllowsArbitraryLoads</key>
-    <false/>
-    <key>NSExceptionDomains</key>
-    <dict>
-        <key>bukoli.borusan.com</key>
-        <dict>
-            <key>NSTemporaryExceptionRequiresForwardSecrecy</key>
-            <false/>
-        </dict>
-        <key>bukoli.mobillium.com</key>
-        <dict>
-            <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
-            <true/>
-        </dict>
-    </dict>
-</dict>
 ```
 
 ### Initialize
