@@ -21,7 +21,7 @@ class BukoliPointCell: UITableViewCell {
     
     var bukoliPoint: BukoliPoint! {
         didSet {
-            pointImageView.af_setImageWithURL(NSURL(string: bukoliPoint.largeImageUrl)!)
+            pointImageView.af_setImageWithURL(NSURL(string: bukoliPoint.smallImageUrl)!)
             nameLabel.text = bukoliPoint.name
             addressLabel.text = bukoliPoint.address
             workingHoursLabel.text = bukoliPoint.workingHours?.readable()

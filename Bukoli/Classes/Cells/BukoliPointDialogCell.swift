@@ -24,8 +24,7 @@ class BukoliPointDialogCell: UICollectionViewCell {
     
     var bukoliPoint: BukoliPoint! {
         didSet {
-            pointImageView.af_setImageWithURL(NSURL(string: bukoliPoint.largeImageUrl)!)
-           // pointImageView.af_setImage(withURL: URL(string: bukoliPoint.largeImageUrl)!)
+            pointImageView.af_setImageWithURL(NSURL(string: bukoliPoint.smallImageUrl)!)
             indexLabel.text = "\(index+1)"
             nameLabel.text = bukoliPoint.name
             addressLabel.text = bukoliPoint.address
